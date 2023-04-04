@@ -1,0 +1,45 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc} % for correct << and >>
+\usepackage{amssymb, amsmath, multicol, amsthm, mathtools}
+\usepackage{csquotes}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{indentfirst}
+\usepackage{esvect}
+\usepackage{float} 
+\usepackage[version=4]{mhchem}
+\mathtoolsset{showonlyrefs=true}
+\usepackage{hyperref}
+\usepackage[rgb,table,xcdraw]{xcolor}
+\hypersetup{				
+	unicode=true,        
+	colorlinks=true,       	
+	linkcolor=black,        
+	citecolor=black,        
+	filecolor=magenta,      
+	urlcolor=black         
+}
+
+\usepackage[left=2cm,right=2cm,
+    top=2cm,bottom=2cm]{geometry}
+\usepackage{fancyhdr}
+
+
+
+\newcommand{\angstrom}{\text{\normalfont\AA}}
+\graphicspath{{images}}
+
+\begin{document}
+
+\newpage
+\bibliographystyle{plain} % We choose the "plain" reference style
+\bibliography{refs.bib} % Entries are in the refs.bib file
+% \section*{References}
+% \printbibliography[title = {\vspace{-2em}}]
+
+\end{document}
