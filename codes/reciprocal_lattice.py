@@ -62,6 +62,7 @@ def plot_vectors(ax):
 
 def plot_path(ax):
     points = {
+        "Y": [(b1[0] / 2, 0, 0), (b1[0] / 2 + 2, 0, 0.5)],
         "$\Gamma$": [(0, 0, 0), (1, -0.5, 0)],
         "M": [(b1[0] / 2, b2[1] / 2, 0), (b1[0] / 2, b2[1] / 2 + 0.4, -1)],
         "R": [
@@ -73,7 +74,7 @@ def plot_path(ax):
     for point in points:
         ax.text(*points[point][1], point, fontsize=25, color="red")
         ax.scatter(*points[point][0], color="red", s=36)
-    path = [["$\Gamma$", "X", "M", "$\Gamma$", "R", "X"], ["M", "R"]]
+    path = [["Y", "$\Gamma$", "X", "M", "$\Gamma$", "R", "X"], ["M", "R"]]
     for subpath in path:
         for i in range(0, len(subpath) - 1):
             line = np.array([points[subpath[i]][0], points[subpath[i + 1]][0]])

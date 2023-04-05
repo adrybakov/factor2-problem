@@ -1,5 +1,6 @@
 # LaTeX
-main.aux
+.DS_Store
+*.aux
 main.log
 main.synctex.gz
 main.bcf
