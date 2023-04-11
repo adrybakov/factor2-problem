@@ -14,7 +14,13 @@
         <...> Notice also that the factor 2 in the exchange energy does not appear explicitly because each pair of spins is counted twice in the sum over lattice sites.
     \end{quote}
 
-    The definition of the Hamiltonian (we ignore the Zeeman term) is the same as in~\eqref{eq:hh-main}: $i + \delta \rightarrow j$ and $\sum_{i, \delta} \rightarrow \sum_{i,j}$, therefore, no conversion is needed for parameters for this textbook.
+    The definition of the Hamiltonian (we ignore the Zeeman term) is the same as in~\eqref{eq:hh-main} with the following notation change:
+    \begin{equation}
+        \begin{matrix} 
+            \vec{S}_{i+\delta} \rightarrow \vec{S}_j, & \sum_{i, \delta} \rightarrow \sum_{i,j}
+        \end{matrix}
+    \end{equation}
+    therefore, no conversion is needed for parameters for this textbook.
 
     Magnon dispersion is provided on page $78$ in equations~\eqref{eq:fom-3.35}~and~\eqref{eq:fom-3.36}
 
@@ -39,7 +45,7 @@
         \label{eq:rezende}
     \end{equation}
 
-    This equation is the same as equation~\eqref{eq:main-dispersion}.
+    This equation is the same as equation~\eqref{eq:main-dispersion} ($n = 6$).
 
 \subsection{<<Magnetism in condensed matter>>\cite{blundell2003magnetism}}
     The derivation of magnon dispersion for the ferromagnetic 1D chain is discussed in the section~$6.6.6$~<<Magnons>>.
@@ -110,7 +116,7 @@
     \begin{equation}
         \hbar\omega = 12JS(1 - \dfrac{1}{3}(\cos(q_xa) + \cos(q_ya) + \cos(q_za)))
     \end{equation}
-    If it is to be rewritten with the notation of this paper it will look like
+    If it is to be rewritten with the notation of this paper it will look like ($n = 6$)
     \begin{equation}
         \hbar\omega = 2nJS(1 - \dfrac{1}{3}(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)))
     \end{equation}
@@ -179,13 +185,61 @@
     \end{equation}
     where $g$ varies from $1$ to $6$ $r_g \in [r_x, -r_x, r_y, -r_y, r_z, -r_z]$ and $I_g = I$ for each $g$. 
 
-    In the notation of this paper the dispersion law becomes
+    In the notation of this paper the dispersion law becomes ($n = 6$)
     \begin{equation}
         \hbar\omega(\mathbf{k}) = 2SJn\left(1 - \dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right)\right)
     \end{equation}
 
 \subsection{<<The Oxford Solid State Basics>>\cite{simon2013oxford}}
+    The derivation of magnon dispersion for the ferromagnet is discussed in the exercise~$20.3$ for the Chapter~$20$~<<Spontaneous Magnetic Order: Ferro-, Antiferro-, and Ferri-Magnetism>>.
 
+    The definition of the Hamiltonian is provided on page~$229$ in equations~\eqref{eq:ossb-20.6}~and~\eqref{eq:ossb-20.2}
+
+    \begin{quote}
+        Consider the Heisenberg Hamiltonian
+        \begin{equation}
+            \hatH = -\dfrac{1}{2}\sum_{\langle i,j \rangle} J \mathbf{S}_i \cdot \mathbf{S}_j + \sum_i g\mu_B \mathbf{B} \cdot \mathbf{S}_i \label{eq:ossb-20.6} \tag{20.6}
+        \end{equation}
+        and  for this exercise set $\mathbf{B} = 0$.
+    \end{quote}
+
+    For the first time Heisenberg Hamiltonian is defined on pages~$225-226$ in equation~\eqref{eq:ossb-20.2}
+    \begin{quote}
+        Note that we have included a factor of $1/2$ out front to avoid overcounting, since the sum actually counts both $J_{ij}$ and $J_{ji}$ (which are equal to each other).
+
+        $\langle ... \rangle$
+
+        One can use brackets $\langle i,j\rangle$ to indicate that $i$ and $j$ are neighbors:
+        \begin{equation}
+            \hatH = -\dfrac{1}{2}\sum_{\langle i,j \rangle} J_{ij} \mathbf{S}_i \cdot \mathbf{S}_j
+        \end{equation}
+        In a uniform system where each spin is coupled to its neighbors with the same strength, we can drop the indices from $J_{i,j}$ (since they all have the same value) and obtain the so-called \textit{Heisenberg Hamiltonian}
+        \begin{equation}
+            \hatH = -\dfrac{1}{2}\sum_{\langle i,j \rangle} J \mathbf{S}_i \cdot \mathbf{S}_j \label{eq:ossb-20.2} \tag{20.2}
+        \end{equation}
+        and  for this exercise set $\mathbf{B} = 0$.
+    \end{quote}
+
+    The double counting is present in this Hamiltonian, thus, it is the same definition as in eq.~\eqref{eq:hh-main} of this paper 
+    with the additional factor of $1/2$, thus if we assume that definition of <<The Oxford Solid State Basics>> and this paper give the same Hamiltonian one have to 
+    introduce the following substitution of exchange parameter in order to move to the definition of this paper:
+    \begin{equation}
+        J \rightarrow 2J \label{eq:ossb-sub}
+    \end{equation}
+
+    The dispersion law for the cubic system is provided  on page~$230$
+    \begin{quote}
+        $\triangleright$ Show that the dispersion curve for <<spin-waves>> of a ferromagnet is given by $\hbar\omega = \vert F(\mathbf{k})\vert$  where
+        \begin{equation}
+            F(\mathbf{k}) = g\mu_b\vert B \vert + JS\left(6 - 2\left(\cos(k_xa) + \cos(k_ya) + \cos(k_za)\right)\right)
+        \end{equation}
+        where we assume a cubic lattice
+    \end{quote}
+
+    In the notation of this paper (with the substitution~\eqref{eq:ossb-sub}) the dispersion law becomes ($n = 6$)
+    \begin{equation}
+        \hbar\omega(\mathbf{k}) = 2JSn\left(1 - \dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right)\right)
+    \end{equation}
 \subsection{<<Magnetism and magnetic materials>>\cite{coey2010magnetism}}
 
 \subsection{<<Rare earth magnetism>>\cite{jensen1991rare}}
