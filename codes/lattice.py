@@ -18,6 +18,10 @@ def plot_cell(ax, plot_type="lattice"):
         ax.text(1.1, 0, 0, "$\mathbf{a}$", fontsize=15, color="red")
         ax.text(0.1, 1, 0, "$\mathbf{b}$", fontsize=15, color="green")
         ax.text(0.1, 0, 1, "$\mathbf{c}$", fontsize=15, color="blue")
+        for i, j in [[0, 0], [0, 1], [1, 0], [1, 1]]:
+            ax.plot([0, 1], [i, i], [j, j], alpha=0.5, linewidth=1, c="black")
+            ax.plot([i, i], [0, 1], [j, j], alpha=0.5, linewidth=1, c="black")
+            ax.plot([i, i], [j, j], [0, 1], alpha=0.5, linewidth=1, c="black")
     elif plot_type == "lattice-neighbors":
         for n in neighbors:
             ax.plot([0, n[0]], [0, n[1]], [0, n[2]], c="orange", linewidth=2)

@@ -45,14 +45,14 @@
         In this paper the main definition is as follows:
 
         \begin{equation}
-            \hat{H} = -J \sum_{ij} \hat{\mathbf{S}}_i^T \hat{\mathbf{S}}_j
+            \hat{H} = -J \sum_{ij} \hat{\mathbf{S}}_i^T \hat{\mathbf{S}}_j,
             \label{eq:hh-main}
         \end{equation}
         where $J$ is an isotropic exchange parameter. The double counting is present in the Hamiltonian, i.e. both terms $i\rightarrow j$ and $j \rightarrow i$ are present in the sum. 
         $\hat{\mathbf{S}}_i$ is a $3\times1$ column vector of the spin operators $(\hat{\mathbf{S}}_i^x, \hat{\mathbf{S}}_i^y, \hat{\mathbf{S}}_i^z)$. 
         Index $i$ run over all $N$ sites in the system and index $j$ runs over neighbors for the site $i$. 
 
-        Bold mathematical symbols in this work represent vectors or matrices and usual symbols - scalars. For instance, $J$ is a scalar exchange parameter, while $\mathbf{J}$ is a matrix of exchange, 
+        Bold mathematical symbols in this paper represent vectors or matrices and usual symbols~-- scalars. For instance, $J$ is a scalar exchange parameter, while $\mathbf{J}$ is a matrix of exchange, 
         for the isotropic case it is defined as
 
         \begin{equation}
@@ -64,13 +64,13 @@
             \end{pmatrix}
         \end{equation}
 
-        Several comparisons of the exchange Hamiltonians and consecutive spin wave Hamiltonians will be done in this paper and for each one the details of the convergence will be discussed. 
-        When possible the results will be present in both ways: the original source and in the definition of this paper.
+        Several comparisons of the exchange Hamiltonians and consecutive spin wave Hamiltonians are done in this paper and for each one the details of the convergence will be discussed. 
+        The results are present in both ways: the original source and in the definition of this paper, when possible.
 
     \section{Ferromagnetic cubic system}
 
-        In this section I will define the parameters and they values for the case study system - 
-        cubic lattice of ferromagnetic spins oriented along the direction of $z$ axis.
+        Parameters and they values for the case study system~-- 
+        cubic lattice of ferromagnetic spins oriented along the direction of $z$ axis are defined in this section.
 
         Lattice (see~Fig.~\ref{fig:lattice}) in cartesian coordinate system is defined by the lattice parameters and angles:
         \begin{equation}
@@ -79,9 +79,8 @@
                 \alpha = 90^{\circ} & \beta = 90^{\circ} & \gamma = 90^{\circ} \\
             \end{matrix}
         \end{equation}
-        In each unit cell there is one spin $S$ at the position $(0, 0, 0)$ (in relative coordinates).
-
-        Spin in the $(0, 0, 0)$ unit cell will have 6 neighbors as shown in Fig.~\ref{fig:lattice-neighbors}.
+        In each unit cell one spin $\mathbf{S}$ at the position $(0, 0, 0)$ (in relative coordinates) is oriented along z axis.
+        Each spin has 6 neighbors as shown in Fig.~\ref{fig:lattice-neighbors} for the $(0, 0, 0)$ unit cell.
 
         \begin{figure}[H]
             \centering
@@ -104,7 +103,7 @@
         \end{figure}
 
 
-        The reciprocal lattice will have the form of:
+        The reciprocal lattice is defined as:
         \begin{equation}
             \begin{matrix}
                 \mathbf{b_1} = (\dfrac{2\pi}{l}, 0, 0) & \mathbf{b_2} = (0,\dfrac{2\pi}{l}, 0) & \mathbf{b_3} = (0, 0, \dfrac{2\pi}{l}) \\
@@ -112,7 +111,7 @@
             \end{matrix}
         \end{equation}
 
-        Magnon dispersion plots will use the following path: Y-$\Gamma$-X-M-$\Gamma$-R-X$\vert$M-R (see~Fig.~\ref{fig:path}).
+        Y-$\Gamma$-X-M-$\Gamma$-R-X$\vert$M-R path (see~Fig.~\ref{fig:path}) is used for magnon dispersion plots.
 
         \begin{figure}[H]
             \centering
@@ -121,7 +120,7 @@
                 \includegraphics[height=10cm]{path.pdf}
             \end{subfigure}
             \hfill
-            \caption{Path in reciprocal space for the magnon dispersion plot: Y-$\Gamma$-X-M-$\Gamma$-R-X$\vert$M-R.}
+            \caption{Path for the magnon dispersion plots in reciprocal space: Y-$\Gamma$-X-M-$\Gamma$-R-X$\vert$M-R.}
             \label{fig:path}
         \end{figure}
 
@@ -133,19 +132,26 @@
             \end{matrix}
         \end{equation}
 
+        For the 1D chain the values are the same, but $n = 2$.
+
     \section{Main magnon dispersion}
 
-        In Appendix I magnon dispersion is derived from the Hamiltonian~in~\eqref{eq:hh-main}.
-        The final result is present in equation~\ref{eq:main-dispersion}. 
+        In Appendix~I magnon dispersion is derived from the Hamiltonian in eq.~\eqref{eq:hh-main}.
+        The final result for the cubic system is present in eq.~\ref{eq:main-dispersion} ($n = 6$). 
 
         \begin{equation}
-            \boxed{
             \hbar\omega(\mathbf{k}) = 2JSn\left(1 - 
-            \dfrac{1}{3}\left(\cos(k_x l) + \cos(k_y l) + \cos(k_z l)\right)\right)}
+            \dfrac{1}{3}\left(\cos(k_x l) + \cos(k_y l) + \cos(k_z l)\right)\right)
             \label{eq:main-dispersion}
         \end{equation}
 
-        In Fig.~\ref{fig:main-dispersion} is plotted for the path Y-$\Gamma$-X-M-$\Gamma$-R-X$\vert$M-R. 
+        For the 1D chain dispersion law is ($n = 2$)
+        \begin{equation}
+            \hbar\omega(\mathbf{k}) = 2JSn\left(1 - \left(\cos(k_x l)\right)\right)
+            \label{eq:main-dispersion-1D}
+        \end{equation}
+
+        It is plotted in Fig.~\ref{fig:main-dispersion} for the path Y-$\Gamma$-X-M-$\Gamma$-R-X$\vert$M-R. 
         The picture is produced with the script <<codes/dispersion.py>> using 
         <<main\_dispersion>> function.
 
@@ -162,27 +168,27 @@
         \end{figure}
 
         \section{Literature check}
-        In this section I will compare the result in equation~\eqref{eq:main-dispersion} with the textbook results. 
-        For each source Hamiltonian definitions are compared with the equation~\eqref{eq:hh-main} and make conversion if necessary. 
-        Detail consideration of each source is provided in Appendix~II. In Table~\ref{tab:literature-review} the summary of textbooks review is provided.
+        In this section the result from eq.~\eqref{eq:main-dispersion} is compared with the textbook results. 
+        For each source Hamiltonian definitions are compared with the equation~\eqref{eq:hh-main} and conversions are made if necessary. 
+        Detailed consideration of each source is provided in Appendix~II. In Table~\ref{tab:literature-review} the summary of textbooks review is provided.
 
         \begin{table}[H]
             \centering
-            \caption{Comparasion of magnon dispersion formulas with textbooks (converted to the notation of this paper).}
+            \caption{Comparison of magnon dispersion formulas with textbooks (converted to the notation of this paper).}
             \label{tab:literature-review}
             \def\arraystretch{2.5}
             \begin{tabular}{|c|c|}
-            \hline
-            Source                             & Formula                                                                                                        \\ \hline
-            This paper                         & $\hbar\omega(\mathbf{k}) = 2JSn\left(1 - \dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right)\right)$ \\ \hline
-            \cite{rezende2020fundamentals}     & $\hbar\omega(\mathbf{k}) = 2nJS\left(1 - \dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right)\right)$ \\ \hline
-            \cite{blundell2003magnetism}       & $\hbar\omega(\mathbf{k}) = 2nJS\left(1 - \dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right)\right)$ \\ \hline
-            \cite{gurevich1996magnetization}   & $\hbar\omega(\mathbf{k}) = 2SJn\left(1 - \dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right)\right)$ \\ \hline
-            \cite{simon2013oxford}             & $\hbar\omega(\mathbf{k}) = 2JSn\left(1 - \dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right)\right)$ \\ \hline
-            \cite{coey2010magnetism}           & $\hbar\omega(\mathbf{k}) = 2JSn\left(1 - \dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right)\right)$ \\ \hline
-            \cite{jensen1991rare}              & $\hbar\omega(\mathbf{k}) = Sn2J\left(1 - \dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right)\right)$ \\ \hline
+                \hline
+                Source                             & Formula                                                                                                        \\ \hline
+                This paper                         & $\hbar\omega(\mathbf{k}) = 2JSn\left(1 - \dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right)\right)$ \\ \hline
+                \cite{rezende2020fundamentals}     & $\hbar\omega(\mathbf{k}) = 2nJS\left(1 - \dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right)\right)$ \\ \hline
+                \cite{blundell2003magnetism}       & $\hbar\omega(\mathbf{k}) = 2nJS\left(1 - \dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right)\right)$ \\ \hline
+                \cite{gurevich1996magnetization}   & $\hbar\omega(\mathbf{k}) = 2SJn\left(1 - \dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right)\right)$ \\ \hline
+                \cite{simon2013oxford}             & $\hbar\omega(\mathbf{k}) = 2JSn\left(1 - \dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right)\right)$ \\ \hline
+                \cite{coey2010magnetism}           & $\hbar\omega(\mathbf{k}) = 2JSn\left(1 - \dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right)\right)$ \\ \hline
+                \cite{jensen1991rare}              & $\hbar\omega(\mathbf{k}) = Sn2J\left(1 - \dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right)\right)$ \\ \hline
             \end{tabular}
-            \end{table}
+        \end{table}
 
     \include{Appendix_I.tex}
 

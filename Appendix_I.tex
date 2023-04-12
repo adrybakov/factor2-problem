@@ -1,14 +1,18 @@
 \section{Appendix I}
 
-In this section I will derive the magnon dispersion formula from the Hamiltonian~in~\eqref{eq:hh-main}.
-First of all I rewrite the Hamiltonian using the raising and lowering spin operators:
+In this section The magnon dispersion law is derived from the Hamiltonian in eq.~\eqref{eq:hh-main}.
+First of all, the Hamiltonian is rewritten with the raising and lowering spin operators:
+
+\begin{equation}
+    \hat{S}_i^{\pm} = \hat{S}_i^x \pm \iu \hat{S}_i^y
+\end{equation}
+
 \begin{equation}
     \begin{matrix}
-        \hat{S}_i^{\pm} = \hat{S}_i^x \pm \iu \hat{S}_i^y \\
-        \hat{\mathbf{S}}_i^T \hat{\mathbf{S}}_j = \hat{S}_i^x \hat{S}_j^x + \hat{S}_i^y \hat{S}_j^y + \hat{S}_i^z \hat{S}_j^z \\
-        \hat{S}_i^x \hat{S}_j^x + \hat{S}_i^y \hat{S}_j^y = \dfrac{1}{2}\left(
-            \hat{S}_i^+\hat{S}_j^- + \hat{S}_i^-\hat{S}_j^+
-        \right)
+        \hat{\mathbf{S}}_i^T \hat{\mathbf{S}}_j = 
+        \hat{S}_i^x \hat{S}_j^x + \hat{S}_i^y \hat{S}_j^y + \hat{S}_i^z \hat{S}_j^z; &
+        \hat{S}_i^x \hat{S}_j^x + \hat{S}_i^y \hat{S}_j^y = 
+        \dfrac{1}{2}\left(\hat{S}_i^+\hat{S}_j^- + \hat{S}_i^-\hat{S}_j^+\right)
     \end{matrix}
 \end{equation}
 
@@ -16,17 +20,18 @@ First of all I rewrite the Hamiltonian using the raising and lowering spin opera
     \hat{H} = -J \sum_{ij} \left(\dfrac{1}{2}\left(
         \hat{S}_i^+\hat{S}_j^- + \hat{S}_i^-\hat{S}_j^+\right) + \hat{S}_i^z \hat{S}_j^z\right)
 \end{equation}
-since
+
+Since the commutator is 
 \begin{equation}
     \left[\hat{S}_i^+\hat{S}_j^-\right] = 2\hat{S}_i^z\delta_{ij}
 \end{equation}
-and $i\ne j$ in the sum:
+and $i\ne j$ in the sum the Hamiltonian becomes:
 \begin{equation}
     \hat{H} =-J \sum_{ij} \left(\dfrac{1}{2}\left(
             \hat{S}_j^-\hat{S}_i^+ + \hat{S}_i^-\hat{S}_j^+\right) + \hat{S}_i^z \hat{S}_j^z\right)
 \end{equation}
 
-From this point the Hamiltonian is treated in the linearised Holstein–Primakoff formalism.
+The spin-wave Hamiltonian is obtained with the linearised Holstein–Primakoff formalism.
 
 \begin{equation}
     \begin{matrix}
@@ -54,9 +59,9 @@ From this point the Hamiltonian is treated in the linearised Holstein–Primakof
     \label{eq:quadratic-ham}
 \end{equation}
 where $N$ is the number of spins in the system, $n$ - number of neighbors for each spin ($6$ in the case of cubic system).
-From this point I focus on the quadratic part of the Hamiltonian $\hat{H}^{(2)}$.
+From this point the quadratic part of the Hamiltonian $\hat{H}^{(2)}$ is considered.
 
-In the next step the Fourier transform is used to move from the local operators $\hat{a}_i^{\dag}$ and $\hat{a}_i$
+The Fourier transform is introduced to move from the local operators $\hat{a}_i^{\dag}$ and $\hat{a}_i$
 to the collective creation and annihilation operators $\hat{a}_k^{\dag}$ and $\hat{a}_k$:
 \begin{equation}
     \hat{a}_i = \dfrac{1}{\sqrt{N}}\sum_k e^{\iu\mathbf{k}\mathbf{r}_i} \hat{a}_k 
@@ -67,8 +72,6 @@ to the collective creation and annihilation operators $\hat{a}_k^{\dag}$ and $\h
 \begin{equation}
     \dfrac{1}{N}\sum_i e^{\iu(\mathbf{k} - \mathbf{k}^{\prime})\mathbf{r}_i} = \delta_{kk^{\prime}} 
 \end{equation}
-
-By substituting it into eq.~\eqref{eq:quadratic-ham} I get:
 
 \begin{equation}
 \begin{aligned}
@@ -87,8 +90,8 @@ By substituting it into eq.~\eqref{eq:quadratic-ham} I get:
 \end{aligned}
 \end{equation}
 
-Since for each $i$ there is the same pattern of neighbors sum over $j$ does not depend on $i$ and I can move it freely.
-Lets define $\mathbf{\delta}_j = \mathbf{r}_j - \mathbf{r}_i$ and rewrite the equation:
+Since for each $i$ there is the same pattern of neighbors sum over $j$ does not depend on $i$ and it can be moved freely.
+Lets define $\boldsymbol{\delta}_j = \mathbf{r}_j - \mathbf{r}_i$ and rewrite the equation:
 
 \begin{equation}
 \begin{aligned}
@@ -109,9 +112,9 @@ Lets define $\mathbf{\delta}_j = \mathbf{r}_j - \mathbf{r}_i$ and rewrite the eq
         \hat{a}_k^{\dag}\hat{a}_{k^{\prime}} \right]
 \end{aligned}
 \end{equation}
+every equation in round parenthesis is equal to $\delta_{kk^{\prime}}$ and the Hamiltonian becomes
 
-\noindent every equation in round parenthesis is equal to $\delta_{kk^{\prime}}$ and the Hamiltonian becomes
-\begin{equation}
+\begin{multline}
     \hat{H}^{(2)} = -JS\sum_k\sum_j\left[e^{-\iu\boldsymbol{\delta}_j\mathbf{k}}
     \hat{a}_k^{\dag}\hat{a}_k
     +
@@ -121,30 +124,23 @@ Lets define $\mathbf{\delta}_j = \mathbf{r}_j - \mathbf{r}_i$ and rewrite the eq
     \hat{a}_k^{\dag}\hat{a}_k 
     -
     e^{\iu(\mathbf{k}-\mathbf{k})\boldsymbol{\delta}_j}
-    \hat{a}_k^{\dag}\hat{a}_k\right]
-\end{equation}
-since for each $\boldsymbol{\delta}_j$ there is $-\boldsymbol{\delta}_j$ 
-present in the sum over $j$ we can rewrite the Hamiltonian one more time:
-\begin{equation}
-    \hat{H}^{(2)} = 2JS\sum_k\sum_j\left(\hat{a}_k^{\dag}\hat{a}_k - 
-    e^{\iu\boldsymbol{\delta}_j\mathbf{k}}\hat{a}_k^{\dag}\hat{a}_k\right)
-\end{equation}
+    \hat{a}_k^{\dag}\hat{a}_k\right] \\
+     = 2JS\sum_k\sum_j(1 - \cos(\boldsymbol{\delta}_j\mathbf{k}))\hat{a}_k^{\dag}\hat{a}_k
+\end{multline}
 $j$ runs from $1$ to $n$, therefore:
 \begin{equation}
     \hat{H}^{(2)} = 2JSn\sum_k\left(1 - \dfrac{1}{n}\sum_j
-    e^{\iu\boldsymbol{\delta}_j\mathbf{k}}\right)\hat{a}_k^{\dag}\hat{a}_k = 
+    \cos(\boldsymbol{\delta}_j\mathbf{k})\right)\hat{a}_k^{\dag}\hat{a}_k = 
     \sum_k \hbar\omega(\mathbf{k})\hat{a}_k^{\dag}\hat{a}_k
 \end{equation}
 
 For the cubic system ($l$ - length of the lattice vector):
 \begin{align}
     \dfrac{1}{n}\sum_j
-    e^{\iu\boldsymbol{\delta}_j\mathbf{k}}  = \dfrac{1}{6}\left((e^{\iu k_x l} + e^{-\iu k_x l}) + 
-    (e^{\iu k_y l} + e^{-\iu k_y l}) +
-    (e^{\iu k_z l} + e^{-\iu k_z l})\right) \\
+    e^{\iu\boldsymbol{\delta}_j\mathbf{k}}  = \dfrac{1}{6}\left(\cos(k_xl) + \cos(-k_xl) + \cos(k_yl) + \cos(-k_yl) + \cos(k_zl) + \cos(-k_zl)\right) \\
     = \dfrac{1}{3}\left(\cos(k_x l) + \cos(k_y l) + \cos(k_z l)\right)
 \end{align}
-and the final formula for the magnon dispersion looks like
+and the final formula for the magnon dispersion is
 \begin{equation}
     \hbar\omega(\mathbf{k}) = 2JSn\left(1 - 
     \dfrac{1}{3}\left(\cos(k_x l) + \cos(k_y l) + \cos(k_z l)\right)\right)
