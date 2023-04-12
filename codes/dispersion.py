@@ -38,7 +38,7 @@ def plot_dispersion(disp_func, name, output_path):
         "X": 0 * b1 + 0.5 * b2 + 0 * b3,
     }
 
-    path = [["Y", "$\Gamma$", "X", "M", "$\Gamma$", "R", "X"], ["M", "R"]]
+    path = [["Y", "$\Gamma$", "X", "M", "$\Gamma$", "R", "X", "M", "R"]]
     labels = []  # Labels of high symmetry points
     labels_c = []  # Coordinates of high symmetry points
     n = 100
