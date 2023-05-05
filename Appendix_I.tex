@@ -268,7 +268,7 @@
         \hbar \omega_q = 2JSZ\left(\dfrac{1}{3}\left(\cos(q_xl) + \cos(q_yl) + \cos(q_zl)\right) - 1\right),
     \end{equation}
 
-\subsection{Rare earth magnetism \cite{jensen1991rare}}\label{subsec:rem}
+\subsection{Rare earth magnetism \cite{jensen1991rare}}
     The derivation of magnon dispersion for the ferromagnet is discussed in the chapter~$5$~<<Spin waves in the ferromagnetic heavy rare earths>>.
 
     The definition of the Hamiltonian is provided on page~$186$ in eq.~5.2.1:
@@ -338,4 +338,46 @@
     And the dispersion in the notation of SpinW law becomes:
     \begin{equation}
         E_{\mathbf{q}} = 2nSJ\left(\dfrac{1}{3}\left(\cos(q_xl) + \cos(q_yl) + \cos(q_zl)\right) - 1\right)
+    \end{equation}
+\subsection{Quantum theory of magnetism \cite{white1983quantum}}
+    The derivation of magnon dispersion is discussed in the section~$8.2.1$~<<Spin-waves theory>>.
+
+    The definition of the Hamiltonian is provided on page~$238$ in eq.~8.2:
+
+    \begin{quote}
+        Let us begin by considering a lattice of spins whose interactions may be described by the Heisenberg exchange interaction (2.89). 
+        Suppose we apply a uniform static field which serves to define a $z$-axis. We now wich to determine how
+        this system responds to the time- and space-dependent field 
+        $\boldsymbol{H}_1c$. 
+        If this field is in the $x$ direction, the total Hamiltonian becomes
+        \begin{equation}
+            H = -\sum_i\sum_{j\ne i} J_{ij}S_i\cdot S_{j} + g \mu_B H_0\sum_i S_i^z + g\mu_B H_1 \sum_i S_i^x\cos(\boldsymbol{q}\cdot\boldsymbol{r})\cos(\omega t).\label{eq:qtom-8.2} \tag{8.2}
+        \end{equation}
+    \end{quote}
+    
+    There is a double counting in the sum as well as the factor, thus the definition of the Hamiltonian differs from SpinW with the sign, the following notation change is necessary at the end:
+    \begin{equation}
+        \begin{matrix} 
+            J \rightarrow -J
+        \end{matrix}
+    \end{equation}
+
+    The spin-wave spectra is defined on the page~$239$ in the eq.~8.10:
+    \begin{quote}
+        \begin{equation}
+            \omega (\boldsymbol{k}) = \gamma H_0 + \dfrac{2NS}{\hbar}[J(0) - J(\boldsymbol{q})]. 
+            \label{eq:qtom-8.10} \tag{8.10}
+        \end{equation}
+    \end{quote}
+    where $J(\boldsymbol{k})$ is defined on page $134$ in the eq.~4.6:
+    \begin{quote}
+        \begin{equation}
+            J(-\boldsymbol{q}^{\prime}) \equiv \dfrac{1}{N}\sum_{i \ne j}J(\boldsymbol{R}_i - \boldsymbol{R}_j)e^{i\boldsymbol{q}^{\prime}\cdot(\boldsymbol{r}_i - \boldsymbol{r}_j)}
+            \label{eq:qtom-4.6} \tag{4.6}
+        \end{equation}
+    \end{quote}
+    
+    And the dispersion in the notation of SpinW law becomes:
+    \begin{equation}
+        \omega(\mathbf{q}) = \dfrac{2nSJ}{\hbar}\left(\dfrac{1}{3}\left(\cos(q_xl) + \cos(q_yl) + \cos(q_zl)\right) - 1\right)
     \end{equation}

@@ -53,7 +53,7 @@
 
     \section{The problem}
 
-        SpinW \cite{SpinW} results does not reproduce the test case of 1D ferromagnetic chain, neither 3D ferromagnetic cubic crystall. 
+        SpinW \cite{SpinW} results does not reproduce the test case of 1D ferromagnetic chain, neither 3D ferromagnetic cubic crystal. 
         The magnon dispersion for such systems plotted with SpinW is twice as small as the result from textbooks 
         \cite{rezende2020fundamentals, blundell2003magnetism, gurevich1996magnetization, simon2013oxford, coey2010magnetism, jensen1991rare} (conversion from textbook's notations are discussed in Appendix~I). 
 
@@ -72,7 +72,7 @@
         $\boldsymbol{J}_{mi, nj}$ is a matrix of exchange parameters, $\boldsymbol{A}_{mi}$ - matrix of single ion anisotropy,  
         $\boldsymbol{H}$ - column vector of external magnetic field. 
 
-        For the ferromagnetic 3D crystall with one magnetic center in unit cell the solution of SpinW gives:
+        For the ferromagnetic 3D crystal with one magnetic center in unit cell the solution of SpinW gives:
 
         \begin{equation}
             E(\boldsymbol{k}) = \hbar\omega(\boldsymbol{k}) = SJn\left(\dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right) - 1\right),
@@ -91,11 +91,11 @@
                 \includegraphics[height=6cm]{main_dispersion.pdf}
             \end{subfigure}
             \hfill
-            \caption{Magnon dispersion comparasion between SpinW and textbooks ($J = 1$, $S = 1$).}
+            \caption{Magnon dispersion comparison between SpinW and textbooks ($J = 1$, $S = 1$).}
             \label{fig:dispersion-comparasion}
         \end{figure}
 
-        In the SpinW paper \cite{toth2015linear} the solution starts by the two consecutiove rotations, 
+        In the SpinW paper \cite{toth2015linear} the solution starts by the two consecutive rotations, 
         which results in the rotation of the exchange matrix $\boldsymbol{J}^{\prime}_{mi, nj} = \boldsymbol{J}_{mi, nj}\boldsymbol{R}_{n-m}$ 
         the definition of the vectors $\boldsymbol{u}$ and $\boldsymbol{v}$.
         This rotation does not affect the following discussion, therefore we drop the $^{\prime}$ sign in the $\boldsymbol{J}_{mi, nj}$ 
@@ -112,7 +112,7 @@
 
     \section{The solution}
 
-    Starting point for the following discusion is equation (20) from the SpinW paper \cite{toth2015linear} 
+    Starting point for the following discussion is equation (20) from the SpinW paper \cite{toth2015linear} 
     (adjusted with respect to the comment at the end of the previous section):
 
     \begin{multline}
@@ -122,9 +122,9 @@
         \cdot\left\{\sqrt{\dfrac{S_{j}}{2}}\left(\overline{\boldsymbol{u}}_j b_{nj} + \boldsymbol{u}_j b^{\dag}_{nj} \right) + 
         \boldsymbol{v}_j(S_j - b^{\dag}_{nj}b_{nj})\right\},
     \end{multline}
-    where $b^{\dag}_{mi}$ and $b_{mi}$ are the creation and annighilation operators of the local quantum spin deviations. Overline denotes complex conjugate.
+    where $b^{\dag}_{mi}$ and $b_{mi}$ are the creation and annihilation operators of the local quantum spin deviations. Overline denotes complex conjugate.
 
-    After the expantion the Hamiltonian Has the zero energy term $E_0$, the term with one-operator terms, expectation value of which vanishes. 
+    After the expansion the Hamiltonian Has the zero energy term $E_0$, the term with one-operator terms, expectation value of which vanishes. 
     And the two-operator term $H^{(2)}$, which is the center of attention in linearised spin-wave theory. 
     We focus on this term, taking into account the property of the exchange matrix $\boldsymbol{J}_{mi, nj} = \boldsymbol{J}_{i,j}(d)$, $\boldsymbol{d} = \boldsymbol{r}_n - \boldsymbol{r}_m$:
     \begin{multline}
@@ -135,9 +135,9 @@
         \boldsymbol{v}^T_i\boldsymbol{J}_{i,j}(\boldsymbol{d})\boldsymbol{v}_j\left(S_ib^{\dag}_{nj}b_{nj} + S_jb^{\dag}_{mi}b_{mi}\right)
     \end{multline}
 
-    The next step of the solution is to apply forier transformation in order to move from the creation and annighilation operators 
+    The next step of the solution is to apply Fourier transformation in order to move from the creation and annihilation operators 
     of the local quantum spin deviations ($b^{\dag}_{mi}$ and $b_{mi}$) 
-    to the creation and annighilation operators of collective quantum exitations ($b^{\dag}(k)$ and $b(k)$).
+    to the creation and annihilation operators of collective quantum excitations ($b^{\dag}(k)$ and $b(k)$).
     \begin{equation}
         b_{mi} = \dfrac{1}{\sqrt{L}}\sum_{\boldsymbol{k} \in \text{B.Z.}} b_i(\boldsymbol{k})e^{i\boldsymbol{k}\boldsymbol{r}_m},
     \end{equation}
@@ -175,18 +175,66 @@
         \overline{A^{i,j}(\boldsymbol{k})}b_{i}(\boldsymbol{k})b^{\dag}_{j}(\boldsymbol{k})\right. \\+ 
         A^{i,j}(\boldsymbol{k})b^{\dag}_{i}(\boldsymbol{k})b_{j}(\boldsymbol{k}) +
         B^{i,j}(\boldsymbol{k})b^{\dag}_{i}(\boldsymbol{k})b^{\dag}_{j}(-\boldsymbol{k}) \\-
-        \left.2 C^{i,j}b^{\dag}_{i}(\boldsymbol{k})b_{i}(\boldsymbol{k})\right]
+        \left.2 C^{i,j}b^{\dag}_{i}(\boldsymbol{k})b_{i}(\boldsymbol{k})\right] \label{eq:ham-before}
     \end{multline}
 
     Next step consist in the rewriting the Hamiltonian in the quadratic form:
     \begin{equation}
-        H = \sum_{\boldsymbol{k} ?} \boldsymbol{x}^{\dag}(\boldsymbol{k})h(\boldsymbol{k})\boldsymbol{x}(\boldsymbol{k}),
+        H = \sum_{\boldsymbol{k} ?} \boldsymbol{x}^{\dag}(\boldsymbol{k})h(\boldsymbol{k})\boldsymbol{x}(\boldsymbol{k}), \label{eq:quadratic-form}
     \end{equation}
+    where
+    \begin{equation}
+        \boldsymbol{x}(\boldsymbol{k}) = \left[b_1(\boldsymbol{k}), \dots, b_N(\boldsymbol{k}, 
+        b^{\dag}_1(-\boldsymbol{k}), \dots, b^{\dag}_N(-\boldsymbol{k}))\right]^T
+    \end{equation}
+    and (in the SpinW paper)
+    \begin{equation}
+        h(\boldsymbol{k}) = 
+        \begin{pmatrix}
+            A(\boldsymbol{k}) - C & B(\boldsymbol{k}) \\
+            B^{\dag}(\boldsymbol{k}) &\overline{A(-\boldsymbol{k})} - C \\
+        \end{pmatrix}
+    \end{equation}
+    where $^{\dag}$ means hermitian conjugate.
     
-    There is a question mark near the $\boldsymbol{k}$ under the summ, since that is the place where SpinW solution and what we are coing to do next differ.
-    In the atricle of Colpa \cite{colpa1978diagonalization}, in the textbook by Rezende \cite{rezende2020fundamentals} (page~$83$) 
+    There is a question mark near the $\boldsymbol{k}$ under the sum, since that is the place where SpinW solution and what we are going to do next differ.
+    In the article of Colpa \cite{colpa1978diagonalization}, in the textbook by Rezende \cite{rezende2020fundamentals} (page~$83$) 
     and indirectly in the article of White \cite{white1965diagonalization}, textbook \cite{jensen1991rare} the restriction $\boldsymbol{k} > 0$ is implied, 
-    which means that for each $\boldsymbol{k}$ in the sum $-\boldsymbol{k}$ is not in the sum.
+    which means that for each $\boldsymbol{k}$ in the sum $-\boldsymbol{k}$ is not in the sum. In addition in the textbook by White \cite{white1983quantum} 
+    the factor $1/2$ added in front of the quadratic Hamiltonian \eqref{eq:quadratic-form} with no restriction to $\boldsymbol{k}$, 
+    which is equivalent to the restriction on $\boldsymbol{k}$ mentioned above.
+
+    However, SpinW paper proceed to cast the Hamiltonian \eqref{eq:ham-before} into quadratic form \eqref{eq:quadratic-form} without any restriction on $\boldsymbol{k}$,
+    moreover, it is specifically noted under the sum in equation 23 that $\boldsymbol{k} \in \text{B.Z.}$. 
+    That fact directly leads to the doubling of each two-operator term, since in eq.~\eqref{eq:quadratic-form} for each $\boldsymbol{k}$ 
+    there are terms $b^{\dag}_i(\boldsymbol{k})b_i(\boldsymbol{k})$ and $b^{\dag}_i(-\boldsymbol{k})b_i(-\boldsymbol{k})$, 
+    while for corresponding $-\boldsymbol{k}$ there are terms $b^{\dag}_i(-\boldsymbol{k})b_i(-\boldsymbol{k})$ and $b^{\dag}_i(\boldsymbol{k})b_i(\boldsymbol{k})$. 
+    Meanwhile, in eq.~\eqref{eq:ham-before} for each $\boldsymbol{k}$ 
+    there is only one term $b^{\dag}_i(\boldsymbol{k})b_i(\boldsymbol{k})$ and for corresponding $-\boldsymbol{k}$ there is term $b^{\dag}_i(-\boldsymbol{k})b_i(-\boldsymbol{k})$.
+    After the diagonalization the Hamiltonian has the form:
+    \begin{equation}
+        H = \sum_{i}\sum_{\boldsymbol{k}}\left[
+            \hbar\omega^{(1)}_i(\boldsymbol{k})\beta^{\dag}_i(\boldsymbol{k})\beta_i(\boldsymbol{k}) +
+            \hbar\omega^{(2)}_i(\boldsymbol{k})\beta^{\dag}_i(-\boldsymbol{k})\beta_i(-\boldsymbol{k})\right]
+    \end{equation}
+    After the diagonalization SpinW takes only first 
+    ($\omega^{(1)}_i(\boldsymbol{k})$) N frequencies as magnon modes and
+    loses part of the solution for $\boldsymbol{k}$, which comes from corresponding $-\boldsymbol{k}$ term. 
+    The correct way to proceed with the result from the paper is to take combination of first N and second N frequencies:
+    \begin{equation}
+        E_i(\boldsymbol{k}) = \hbar(\omega_i^{(1)}(\boldsymbol{k}) + \omega_i^{(2)}(-\boldsymbol{k}))
+    \end{equation}
+
+    For the ferromagnetic case of 3D cubic crystal:
+    \begin{equation}
+        \omega^{(1)}(\boldsymbol{k}) = \omega^{(2)}(\boldsymbol{k}) = \hbar\omega(\boldsymbol{k}) = \dfrac{SJn}{\hbar}\left(\dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right) - 1\right)
+    \end{equation}
+    and
+
+    \begin{equation}
+        E(\boldsymbol{k}) = 2SJn\left(\dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right) - 1\right),
+    \end{equation}
+    which now matches with the textbook's result.
 
     % \section{SpinW}\label{sec:spinw}
     %     In this section the method from SpinW paper \cite{toth2015linear} and the results plotted by the code \cite{SpinW} itself are discussed.
