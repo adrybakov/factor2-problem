@@ -1,147 +1,341 @@
 \section{Appendix I}
 
-In this section the magnon dispersion law is derived from the Hamiltonian in eq.~\eqref{eq:hh-main}.
-First of all, the Hamiltonian is rewritten with the raising and lowering spin operators:
+\subsection{Fundamentals of Magnonics \cite{rezende2020fundamentals}}
 
-\begin{equation}
-    \hat{S}_i^{\pm} = \hat{S}_i^x \pm \iu \hat{S}_i^y
-\end{equation}
+    In <<Fundamentals of Magnonics>> the derivation of magnon dispersion is done in chapter~$3$~<<Quantum Theory of Spin Waves: Magnons>>.
 
-\begin{equation}
-    \begin{matrix}
-        \hat{\mathbf{S}}_i^T \hat{\mathbf{S}}_j = 
-        \hat{S}_i^x \hat{S}_j^x + \hat{S}_i^y \hat{S}_j^y + \hat{S}_i^z \hat{S}_j^z; &
-        \hat{S}_i^x \hat{S}_j^x + \hat{S}_i^y \hat{S}_j^y = 
-        \dfrac{1}{2}\left(\hat{S}_i^+\hat{S}_j^- + \hat{S}_i^-\hat{S}_j^+\right)
-    \end{matrix}
-\end{equation}
+    The Hamiltonian is defined on page~$72$, eq.~3.6 as follows:
 
-\begin{equation}
-    \hat{H} = -J \sum_{ij} \left(\dfrac{1}{2}\left(
-        \hat{S}_i^+\hat{S}_j^- + \hat{S}_i^-\hat{S}_j^+\right) + \hat{S}_i^z \hat{S}_j^z\right)
-\end{equation}
+    \begin{quote}
+        \begin{equation}
+            H = -g\mu_B\sum_iH_zS_i^z - J\sum_{i, \delta}\vec{S}_i \cdot \vec{S}_{i+\delta}, \label{eq:fom-3.6} \tag{3.6}
+        \end{equation}
+        where $\vec{S}_i$ is spin angular momentum operator as site $i$, <...> and $\vec{\delta}$ is the vector connecting site $i$ with its nearest neighbors. 
+        <...> Notice also that the factor 2 in the exchange energy does not appear explicitly because each pair of spins is counted twice in the sum over lattice sites.
+    \end{quote}
 
-Since the commutator is 
-\begin{equation}
-    \left[\hat{S}_i^+\hat{S}_j^-\right] = 2\hat{S}_i^z\delta_{ij}
-\end{equation}
-and $i\ne j$ in the sum, the Hamiltonian becomes:
-\begin{equation}
-    \hat{H} =-J \sum_{ij} \left(\dfrac{1}{2}\left(
-            \hat{S}_j^-\hat{S}_i^+ + \hat{S}_i^-\hat{S}_j^+\right) + \hat{S}_i^z \hat{S}_j^z\right)
-\end{equation}
+    The definition of the Hamiltonian differs from SpinW with the sign, the following notation change is necessary at the end:
+    \begin{equation}
+        \begin{matrix} 
+            J \rightarrow -J
+        \end{matrix}
+    \end{equation}
 
-The spin-wave Hamiltonian is obtained with the linearised Holstein–Primakoff formalism.
+    Magnon dispersion is provided on page $78$ in eqs.~3.35~and~3.36
 
-\begin{equation}
-    \begin{matrix}
-        \hat{S}_i^+ = \sqrt{2S}\hat{a}_i \\
-        \hat{S}_i^- = \sqrt{2S}\hat{a}_i^{\dag} \\
-        \hat{S}_i^z = S - \hat{a}_i^{\dag}\hat{a}_i
-    \end{matrix}
-\end{equation}
+    \begin{quote}
+        \begin{equation}
+            E_k = A_k = g\mu_B H_z + 2zJS(1 - \gamma_k), \label{eq:fom-3.35} \tag{3.35}
+        \end{equation}
+        where $\gamma_k$ is the structure factor given by
+        \begin{equation}
+            \gamma_k = \dfrac{1}{z}\sum_{\vec{\delta}}e^{\iu \vec{k}\cdot\vec{\delta}} \label{eq:fom-3.36} \tag{3.36}
+        \end{equation}
+    \end{quote}
+    where $z$ is the number of neighbors ($n$ in the notation of this paper). $\gamma_k$ for the cubic system is (it is provided on page~$79$ in eq.~3.37):
+    \begin{quote}
+        \begin{equation}
+            \gamma_k = \dfrac{1}{3}(\cos(k_xa) + \cos(k_ya) + \cos(k_za)) \label{eq:fom-3.37} \tag{3.37}
+        \end{equation}
+    \end{quote}
+    where $a$ is a lattice parameter ($l$ in the notation of this paper). The final equation from the \cite{rezende2020fundamentals} in the notation of SpinW is
+    \begin{equation}
+        \hbar\omega(\mathbf{k}) = 2nJS\left(\dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right) - 1\right)
+        \label{eq:rezende}
+    \end{equation}
 
-\begin{equation}
-    \hat{H} = -J \sum_{ij} \left(\dfrac{1}{2}\left(
-        2S\hat{a}_j^{\dag}\hat{a}_i + 2S\hat{a}_i^{\dag}\hat{a}_j\right) + 
-        \left(S - \hat{a}_i^{\dag}\hat{a}_i\right)\left(S - \hat{a}_j^{\dag}\hat{a}_j\right)\right)
-\end{equation}
+\subsection{Magnetism in condensed matter \cite{blundell2003magnetism}}
+    The derivation of magnon dispersion for the ferromagnetic 1D chain is discussed in the section~$6.6.6$~<<Magnons>>.
 
-\begin{equation}
-    \hat{H} = E_0 + \hat{H}^{(2)} + \dots 
-\end{equation}
-\begin{equation}
-    E_0 = -JS^2Nn \label{eq:zero-energy}
-\end{equation}
-\begin{equation}
-    \hat{H}^{(2)} = -JS \sum_{ij} \left(\hat{a}_j^{\dag}\hat{a}_i + \hat{a}_i^{\dag}\hat{a}_j - 
-    \hat{a}_i^{\dag}\hat{a}_i - \hat{a}_j^{\dag}\hat{a}_j\right)
-    \label{eq:quadratic-ham}
-\end{equation}
-where $N$ is the number of spins in the system, $n$ - number of neighbors for each spin ($6$ in the case of cubic system).
-From this point the quadratic part of the Hamiltonian $\hat{H}^{(2)}$ is considered.
+    The definition of the Hamiltonian is provided on page~$122$ in eqs.~6.9~and~6.10:
+    \begin{quote}
+        (1) We begin with a semiclassical derivation of the spin wave dispersion.
+        First, recall the Hamiltonian for the Heisenberg model,
+        \begin{equation}
+            \hatH = -\sum_{\langle ij\rangle} J\hat{\mathbf{S}}_i \cdot \hat{\mathbf{S}}_j \label{eq:micm-6.9} \tag{6.9}
+        \end{equation}
+        (which is eqn. $6.4$) In a one-dimensional chain each spin has two neighbours, so the Hamiltonian reduces to
+        \begin{equation}
+            \hatH = -2J\sum_{i} \hat{\mathbf{S}}_i \cdot \hat{\mathbf{S}}_{i+1} \label{eq:micm-6.10} \tag{6.10}
+        \end{equation}
+    \end{quote}
+    with the comment to the equation~($6.4$) on the page~$116$ being:
+    \begin{quote}
+        where the constant $J$ is the exchange integral and the symbol $\langle ij \rangle$ below the $\sum$ denotes a sum over nearest neighbours. 
+        The spins $\mathbf{S}_i$ are treated as three-dimensional vectors ...
+    \end{quote}
 
-The Fourier transform is introduced to move from the local operators $\hat{a}_i^{\dag}$ and $\hat{a}_i$
-to the collective creation and annihilation operators $\hat{a}_k^{\dag}$ and $\hat{a}_k$:
-\begin{equation}
-    \hat{a}_i = \dfrac{1}{\sqrt{N}}\sum_k e^{\iu\mathbf{k}\mathbf{r}_i} \hat{a}_k 
-\end{equation}
-\begin{equation}
-    \hat{a}_i^{\dag} = \dfrac{1}{\sqrt{N}}\sum_k e^{-\iu\mathbf{k}\mathbf{r}_i} \hat{a}_k^{\dag} 
-\end{equation}
-\begin{equation}
-    \dfrac{1}{N}\sum_i e^{\iu(\mathbf{k} - \mathbf{k}^{\prime})\mathbf{r}_i} = \delta_{kk^{\prime}} 
-\end{equation}
+    The definition of the Heisenberg model is found for the first time in the section~$4.2.1$ on the page~$76$ in eqs.~4.7~and~4.8:
+    \begin{quote}
+        This motivates the Hamiltonian of the Heisenberg model:
+        \begin{equation}
+            \hatH = -\sum_{ij}J_{ij}\mathbf{S}_i \cdot \mathbf{S}_j, \label{eq:micm-4.7} \tag{4.7}
+        \end{equation}
+        where $J_{ij}$ is the exchange constant between the $i^{\text{th}}$ and $j^{\text{th}}$ spins. 
+        The factor of 2 is omitted because the summation includes each pair of spins twice. 
+        Another way of writing eqn $4.7$ is 
+        \begin{equation}
+            \hatH = -2\sum_{i>j}J_{ij}\mathbf{S}_i \cdot \mathbf{S}_j, \label{eq:micm-4.8} \tag{4.8}
+        \end{equation}
+        where the $i > j$ avoids the <<double-counting>> and hence the factor of two returns. 
+        Often it is possible to take $J_{ij}$ to be equal to a constant $J$ for nearest neighbours spins and to be $0$ otherwise.
+    \end{quote}
+    The eq.~6.9 corresponds to the definition in eq.~4.7
+    and the eq.~6.10 corresponds to the definition in eq.~4.8. 
+    The definition in eq.~4.7 differs from SpinW with the sign, the following notation change is necessary at the end:
+    \begin{equation}
+        \begin{matrix} 
+            J \rightarrow -J
+        \end{matrix}
+    \end{equation}
 
-\begin{equation}
-\begin{aligned}
-    \hat{H}^{(2)}  = -JS \sum_i\sum_j \dfrac{1}{N}\left[
-        \left(\sum_k e^{-\iu\mathbf{k}\mathbf{r}_j} \hat{a}_k^{\dag}\right)
-        \left(\sum_{k^{\prime}} e^{\iu\mathbf{k^{\prime}}\mathbf{r}_i} \hat{a}_{k^{\prime}}\right)\right. \\
-        +
-        \left(\sum_k e^{-\iu\mathbf{k}\mathbf{r}_i} \hat{a}_k^{\dag}\right)
-        \left(\sum_{k^{\prime}} e^{\iu\mathbf{k^{\prime}}\mathbf{r}_j} \hat{a}_{k^{\prime}}\right)  \\
-        -
-        \left(\sum_k e^{-\iu\mathbf{k}\mathbf{r}_i} \hat{a}_k^{\dag}\right)
-        \left(\sum_{k^{\prime}} e^{\iu\mathbf{k^{\prime}}\mathbf{r}_i} \hat{a}_{k^{\prime}}\right)  \\
-        -
-        \left.\left(\sum_k e^{-\iu\mathbf{k}\mathbf{r}_j} \hat{a}_k^{\dag}\right)
-        \left(\sum_{k^{\prime}} e^{\iu\mathbf{k^{\prime}}\mathbf{r}_j} \hat{a}_{k^{\prime}}\right) \right]
-\end{aligned}
-\end{equation}
+    The Hamiltonian is solved specifically for the ferromagnetic 1D chain and not for the 3D cubic system with the final result (equation~6.20 on page~$123$ and equation~-6.25 on page~$124$)
+    \begin{quote}
+        \begin{equation}
+            \hbar\omega = 4JS(1 - \cos(qa)), \label{eq:micm-6.20} \tag{6.20}
+        \end{equation}
+        \begin{equation}
+           E(q) = -2NS^2J + 4JS(1 - \cos(qa)), \label{eq:micm-6.25} \tag{6.25}
+        \end{equation}
+    \end{quote}
+    Magnon dispersion from eq.~6.20 is plotted in the book on page~$123$ in figure~$6.12$ (Fig.~\ref{fig:micm-6.12}). 
+    Path from $0$ to $\pi / a$ is the same as the $\Gamma$-X path in Fig.~\ref{fig:dispersion-comparasion}. 
+    If the parameters $J = $1, $S = 1$ are substituted into the eq.~6.20 then those two graphs are exactly the same.
+    \begin{quote}
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}[b]{0.5\textwidth}
+                \centering
+                \includegraphics[height=6cm]{micm-6.12.png}
+            \end{subfigure}
+            \hfill
+            \caption{Magnon dispersion plot from <<Magnetism in condensed matter>>.}
+            \label{fig:micm-6.12}
+        \end{figure}
+    \end{quote}
+    For the cubic system eq.~6.20 in SpinW notation looks like:
+    \begin{equation}
+        \hbar\omega(\boldsymbol{k}) = 2nJS(\dfrac{1}{3}(\cos(q_xa) + \cos(q_ya) + \cos(q_za)) - 1)
+    \end{equation}
 
-Since for each $i$ there is the same pattern of neighbors, sum over $j$ does not depend on $i$ and it can be moved freely.
-Lets define $\boldsymbol{\delta}_j = \mathbf{r}_j - \mathbf{r}_i$ and rewrite the equation:
+\subsection{Magnetisation oscillations and waves \cite{gurevich1996magnetization}}
+    The derivation of magnon dispersion for the ferromagnet is discussed in the section~$7.4$~<<Elements of microscopic spin-wave theory>>.
 
-\begin{equation}
-\begin{aligned}
-    \hat{H}^{(2)}  = -JS \sum_k\sum_{k^{\prime}}\sum_j \left[
-        e^{-\iu\boldsymbol{\delta}_j\mathbf{k}}
-        \left(\dfrac{1}{N}\sum_ie^{\iu(\mathbf{k^{\prime}}-\mathbf{k})\mathbf{r}_i}\right) 
-        \hat{a}_k^{\dag}\hat{a}_{k^{\prime}}\right. \\
-        +
-        e^{\iu\boldsymbol{\delta}_j\mathbf{k}}
-        \left(\dfrac{1}{N}\sum_ie^{\iu(\mathbf{k^{\prime}}-\mathbf{k})\mathbf{r}_i}\right)
-         \hat{a}_k^{\dag}\hat{a}_{k^{\prime}}  \\
-        -
-        \left(\dfrac{1}{N}\sum_ie^{\iu(\mathbf{k^{\prime}}-\mathbf{k})\mathbf{r}_i}\right)
-        \hat{a}_k^{\dag}\hat{a}_{k^{\prime}}  \\
-        -
-        \left.e^{\iu(\mathbf{k^{\prime}}-\mathbf{k})\boldsymbol{\delta}_j}
-        \left(\dfrac{1}{N}\sum_ie^{\iu(\mathbf{k^{\prime}}-\mathbf{k})\mathbf{r}_i}\right)
-        \hat{a}_k^{\dag}\hat{a}_{k^{\prime}} \right]
-\end{aligned}
-\end{equation}
-every equation in round parenthesis is equal to $\delta_{kk^{\prime}}$ and the Hamiltonian becomes
+    The definition of the Hamiltonian is provided on page~$205$ in eq.~7.82:
 
-\begin{multline}
-    \hat{H}^{(2)} = -JS\sum_k\sum_j\left[e^{-\iu\boldsymbol{\delta}_j\mathbf{k}}
-    \hat{a}_k^{\dag}\hat{a}_k
-    +
-    e^{\iu\boldsymbol{\delta}_j\mathbf{k}}
-     \hat{a}_k^{\dag}\hat{a}_k 
-    -
-    \hat{a}_k^{\dag}\hat{a}_k 
-    -
-    e^{\iu(\mathbf{k}-\mathbf{k})\boldsymbol{\delta}_j}
-    \hat{a}_k^{\dag}\hat{a}_k\right] \\
-     = 2JS\sum_k\sum_j(1 - \cos(\boldsymbol{\delta}_j\mathbf{k}))\hat{a}_k^{\dag}\hat{a}_k
-\end{multline}
-$j$ runs from $1$ to $n$, therefore:
-\begin{equation}
-    \hat{H}^{(2)} = 2JSn\sum_k\left(1 - \dfrac{1}{n}\sum_j
-    \cos(\boldsymbol{\delta}_j\mathbf{k})\right)\hat{a}_k^{\dag}\hat{a}_k = 
-    \sum_k \hbar\omega(\mathbf{k})\hat{a}_k^{\dag}\hat{a}_k
-\end{equation}
+    \begin{quote}
+        \begin{equation}
+            \hatH = \gamma\hbar\sum_{f}\hat{S}_f^z - \sum_f\sum_{f^{\prime} \ne f} I_{ff^{\prime}}\mathbf{S}_f\mathbf{S}_{f^{\prime}} \label{eq:moaw-7.82} \tag{7.82}
+        \end{equation}
+        where $\mathbf{S}_f\mathbf{S}_{f^{\prime}} = \hat{S}_f^x\hat{S}_{f^{\prime}}^x + \hat{S}_f^y\hat{S}_{f^{\prime}}^y + \hat{S}_f^z\hat{S}_{f^{\prime}}^z$.
+    \end{quote}
+    The double counting is present in this Hamiltonian, thus the definition of the Hamiltonian differs from SpinW with the sign, the following notation change is necessary at the end:
+    \begin{equation}
+        \begin{matrix} 
+            J \rightarrow -J
+        \end{matrix}
+    \end{equation}
 
-For the cubic system ($l$ - length of the lattice vector):
-\begin{align}
-    \dfrac{1}{n}\sum_j
-    \cos(\boldsymbol{\delta}_j\mathbf{k})  = \dfrac{1}{6}\left(\cos(k_xl) + \cos(-k_xl) + \cos(k_yl) + \cos(-k_yl) + \cos(k_zl) + \cos(-k_zl)\right) \\
-    = \dfrac{1}{3}\left(\cos(k_x l) + \cos(k_y l) + \cos(k_z l)\right)
-\end{align}
-and the final formula for the magnon dispersion is
-\begin{equation}
-    \hbar\omega(\mathbf{k}) = 2JSn\left(1 - 
-    \dfrac{1}{3}\left(\cos(k_x l) + \cos(k_y l) + \cos(k_z l)\right)\right)
-\end{equation}
+    The dispersion law is provided in eq.~7.99 on page~$209$:
+    \begin{quote}
+        where $r_g = r_f - r_{f^{\prime}}$, $I_g \equiv I_{ff^{\prime}}$, and the last sum is over all lattice points except one, the initial. 
+        The Hamiltonian ($7.98$) has the desired form of ($7.84$), and
+        \begin{equation}
+            \varepsilon_k(k) = \gamma\hbar H + 2S \sum_g [1 - exp(\iu \mathbf{k}\mathbf{r}_g)]I_g. \label{eq:moaw-7.99} \tag{7.99}
+        \end{equation}
+    \end{quote}
+
+    For the cubic ferromagnet the textbook provides the figure~7.13 (Fig.~\ref{fig:moaw-7.13})
+    \begin{quote}
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}[b]{0.49\textwidth}
+                \centering
+                \includegraphics[height=6cm]{moaw-7.13.png}
+                \caption{Original plot}
+                \label{fig:moaw-7.13-original}
+            \end{subfigure}
+            \hfill
+            \begin{subfigure}[b]{0.49\textwidth}
+                \centering
+                \includegraphics[height=6cm]{custom-moaw.pdf}
+                \caption{Same plot with use of eq.~\eqref{eq:textbook}}
+                \label{fig:moaw-7.13-custom}
+            \end{subfigure}
+            \hfill
+            \caption{Magnon dispersion plot from <<Magnetisation oscillations and waves>>.}
+            \label{fig:moaw-7.13}
+        \end{figure}
+    \end{quote}
+    In this picture curve~$\langle 100\rangle$ (from $0$ to $\pi$) corresponds to the path $\Gamma$-X, 
+    curve~$\langle 110\rangle$ (from $0$ to $\pi\sqrt{2}$) to the path $\Gamma$-M and
+    curve~$\langle 111\rangle$ (from $0$ to $\pi\sqrt{3}$) to the path $\Gamma$-R 
+    in the Fig.~\ref{fig:dispersion-comparasion}. In Fig.~\ref{fig:moaw-7.13-custom} the same graph is plotted by using the equation for magnon dispersion from this paper. 
+    The picture is produced with the script <<codes/dispersion.py>> using <<custom\_moaw>> function.
+
+    The dispersion law from eq.~7.99 for the cubic system in the notation of SpinW is:
+    \begin{equation}
+        \hbar\omega(\mathbf{k}) = 2SIn\left(\dfrac{1}{3}\left(\cos(k_xr_x) + \cos(k_yr_y) + \cos(k_zr_z)\right) - 1\right)
+    \end{equation}
+
+\subsection{The Oxford Solid State Basics \cite{simon2013oxford}}
+    The derivation of magnon dispersion for the ferromagnet is discussed in the exercise~$20.3$ for the Chapter~$20$~<<Spontaneous Magnetic Order: Ferro-, Antiferro-, and Ferri-Magnetism>>.
+
+    The definition of the Hamiltonian is provided on page~$229$ in eqs.~20.6~and~20.2:
+
+    \begin{quote}
+        Consider the Heisenberg Hamiltonian
+        \begin{equation}
+            \hatH = -\dfrac{1}{2}\sum_{\langle i,j \rangle} J \mathbf{S}_i \cdot \mathbf{S}_j + \sum_i g\mu_B \mathbf{B} \cdot \mathbf{S}_i \label{eq:ossb-20.6} \tag{20.6}
+        \end{equation}
+        and  for this exercise set $\mathbf{B} = 0$.
+    \end{quote}
+
+    For the first time Heisenberg Hamiltonian is defined on pages~$225-226$ in eq.~20.2:
+    \begin{quote}
+        Note that we have included a factor of $1/2$ out front to avoid overcounting, since the sum actually counts both $J_{ij}$ and $J_{ji}$ (which are equal to each other).
+
+        $\langle ... \rangle$
+
+        One can use brackets $\langle i,j\rangle$ to indicate that $i$ and $j$ are neighbors:
+        \begin{equation}
+            \hatH = -\dfrac{1}{2}\sum_{\langle i,j \rangle} J_{ij} \mathbf{S}_i \cdot \mathbf{S}_j
+        \end{equation}
+        In a uniform system where each spin is coupled to its neighbors with the same strength, we can drop the indices from $J_{i,j}$ (since they all have the same value) and obtain the so-called \textit{Heisenberg Hamiltonian}
+        \begin{equation}
+            \hatH = -\dfrac{1}{2}\sum_{\langle i,j \rangle} J \mathbf{S}_i \cdot \mathbf{S}_j \label{eq:ossb-20.2} \tag{20.2}
+        \end{equation}
+    \end{quote}
+
+    The double counting is present in this Hamiltonia as well as the additional factor of $1/2$, thus the definition of the Hamiltonian differs from SpinW with the sign and factor $1/2$, the following notation change is necessary at the end:
+    \begin{equation}
+        \begin{matrix} 
+            J \rightarrow -2J
+        \end{matrix}
+    \end{equation}
+
+    The dispersion law for the cubic system is provided  on page~$230$:
+    \begin{quote}
+        $\triangleright$ Show that the dispersion curve for <<spin-waves>> of a ferromagnet is given by $\hbar\omega = \vert F(\mathbf{k})\vert$  where
+        \begin{equation}
+            F(\mathbf{k}) = g\mu_b\vert B \vert + JS\left(6 - 2\left(\cos(k_xa) + \cos(k_ya) + \cos(k_za)\right)\right)
+        \end{equation}
+        where we assume a cubic lattice
+    \end{quote}
+
+    In the notation of SpinW the dispersion law becomes:
+    \begin{equation}
+        \hbar\omega(\mathbf{k}) = 2JSn\left(\dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right) - 1\right)
+    \end{equation}
+
+\subsection{Magnetism and magnetic materials \cite{coey2010magnetism}}
+    The derivation of magnon dispersion for the ferromagnet is discussed in the section~$5.4.1$~<<Spin waves>>.
+
+    The definition of the Hamiltonian is provided on page~$137$ in eq.~5.24:
+
+    \begin{quote}
+        When there is a lattice, the Hamiltonian$^1$ is generalized to a sum over all pairs of atoms on lattice sites $i, j$:
+        \begin{equation}
+            \hatH = -2\sum_{i > j} J_{ij} \mathbf{S}_i \cdot \mathbf{S}_j \label{eq:mamm-5.24} \tag{5.24}
+        \end{equation}
+    \end{quote}
+
+    In this definition there is no double counting ($i > j$), but there is a factor of $2$ present, 
+    thus the definition of the Hamiltonian differs from SpinW with the sign, the following notation change is necessary at the end:
+    \begin{equation}
+        \begin{matrix} 
+            J \rightarrow -J
+        \end{matrix}
+    \end{equation}
+
+    The dispersion law for the cubic system is provided  on page~$163$:
+    \begin{quote}
+        The generalization to a three-dimensional cubic lattice with nearest-neighbour interactions is
+        \begin{equation}
+            \hbar \omega_q = 2JS\left[Z - \sum_{\delta}\cos\mathbf{q\cdot\delta}\right],
+        \end{equation}
+        where the sum is over the $Z$ vectors $\mathbf{\delta}$ connecting the central atom to its nearest neighbours.
+    \end{quote}
+    In case of the cubic system $Z = 6$ and there are $6$ nearest-neighbours with the vectors
+    \begin{equation}
+        \begin{matrix}
+            (l, 0, 0),& (0, l, 0),& (0, 0, l),\\
+            (-l, 0, 0),& (0, -l, 0),& (0, 0, -l),\\
+        \end{matrix}
+    \end{equation}
+    And the dispersion in notation of SpinW law becomes:
+    \begin{equation}
+        \hbar \omega_q = 2JSZ\left(\dfrac{1}{3}\left(\cos(q_xl) + \cos(q_yl) + \cos(q_zl)\right) - 1\right),
+    \end{equation}
+
+\subsection{Rare earth magnetism \cite{jensen1991rare}}\label{subsec:rem}
+    The derivation of magnon dispersion for the ferromagnet is discussed in the chapter~$5$~<<Spin waves in the ferromagnetic heavy rare earths>>.
+
+    The definition of the Hamiltonian is provided on page~$186$ in eq.~5.2.1:
+
+    \begin{quote}
+        \begin{equation}
+            \hatH = \sum_i\left[\sum_{l = 2,4,6}B^0_lQ_l^0(\mathbf{J}_i) + B^6_6Q_6^6(\mathbf{J}_i) - g\mu_B \mathbf{J}_i\cdot\mathbf{H}\right]
+            - \dfrac{1}{2} \sum_{i\ne j} \mathcal{J}(ij)\mathbf{J} _i\cdot\mathbf{J}_j\label{eq:rem-5.2.1} \tag{5.2.1}
+        \end{equation}
+    \end{quote}
+    
+    In the eq.~5.2.1 crystal field and magnetic field are considered in the first sum, while the second term represents Heisenberg Hamiltonian.
+    There is a double counting in the sum as well as the factor $1/2$, thus the definition of the Hamiltonian differs from SpinW with the sign and factor $1/2$, the following notation change is necessary at the end:
+    \begin{equation}
+        \begin{matrix} 
+            J \rightarrow -2J
+        \end{matrix}
+    \end{equation}
+
+    The spin-wave spectra is defined on the page~$190$ in the eq.~5.2.22:
+    \begin{quote}
+        The energy parameters are
+        \begin{equation}
+            \begin{matrix}
+                U_1 = \dfrac{1}{2}\sum_{\mathbf{q}}(E_{\mathbf{q}} - A_{\mathbf{q}}); & E_{\mathbf{q}} = \sqrt{A_{\mathbf{q}}^2 - B^2}.
+            \end{matrix}
+            \label{eq:rem-5.2.22} \tag{5.2.22}
+        \end{equation}
+    \end{quote}
+    where $A_{\mathbf{q}}$, $A$ and $B$ are defined in the eqs.~5.2.18~and~5.2.15:
+    \begin{quote}
+        \begin{equation}
+            \begin{matrix}
+                A = \dfrac{1}{J}\left\{3B^0_2J^{(2)} - 21B^6_6J^{(6)}\cos6\phi + g\mu_BJH\cos(\phi - \phi_H)\right\}\\
+                B = \dfrac{1}{J}\left\{3B^0_2J^{(2)} + 15B^6_6J^{(6)}\cos6\phi\right\}.
+            \end{matrix}
+            \label{eq:rem-5.2.15} \tag{5.2.15}
+        \end{equation}
+
+        $\langle ... \rangle$
+
+        
+        \begin{equation}
+            A_{\mathbf{q}} = A + J\left\{\mathcal{J}(\mathbf{0}) - \mathcal{J}(\mathbf{q})\right\}
+            \label{eq:rem-5.2.18} \tag{5.2.18}
+        \end{equation}
+    \end{quote}
+    $A = 0$ and $B = 0$ if no magnetic field nor anisotropic effects are considered. In the case of this paper $L = 0$, thus $J = S$ and the equation for the dispersion law is
+    \begin{equation}
+        E_{\mathbf{q}} = S\left(\mathcal{J}(\mathbf{0}) - \mathcal{J}(\mathbf{q})\right)
+    \end{equation}
+
+    $\mathcal{J}(\mathbf{q})$ is defined in the eq.~5.1.1a:
+    \begin{quote}
+        \begin{equation}
+            \begin{matrix}
+                \mathcal{J}_{ss\prime}(\mathbf{q}) = \sum_{j \in s^{\prime} - subl.} \mathcal{J}(ij)e^{-\iu\mathbf{q}\cdot(\mathbf{R}_i - \mathbf{R}_j)}; & i \in s-sublattice,
+            \end{matrix}  
+            \label{eq:rem-5.1.1a} \tag{5.1.1a}
+        \end{equation}
+    \end{quote}
+    And for the cubic lattice it becomes:
+    \begin{equation}
+        \mathcal{J}(\mathbf{q}) = J \left(e^{-\iu q_xl} + e^{\iu q_xl} + e^{-\iu q_yl} + e^{\iu q_yl} + e^{-\iu q_zl} + e^{\iu q_zl}\right) = 
+        2J \left(\cos(q_xl) + \cos(q_yl) + \cos(q_zl)\right)
+    \end{equation}
+    And the dispersion in the notation of SpinW law becomes:
+    \begin{equation}
+        E_{\mathbf{q}} = 2nSJ\left(\dfrac{1}{3}\left(\cos(q_xl) + \cos(q_yl) + \cos(q_zl)\right) - 1\right)
+    \end{equation}

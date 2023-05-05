@@ -44,445 +44,294 @@
 
 \begin{document}
 
-    \section{Definition of the Hamiltonian}
+    \begin{center}
+    \centering \LARGE SpinW factor 2 problem
 
-        There is a number of details in the definition of the Heisenberg Hamiltonians, which may cause an incompatibility of the direct results. 
-        In this paper the main definition is as follows:
+    \vspace{1cm}
+    \small Andrey Rybakov and Marko Marino
+    \end{center}
+
+    \section{The problem}
+
+        SpinW \cite{SpinW} results does not reproduce the test case of 1D ferromagnetic chain, neither 3D ferromagnetic cubic crystall. 
+        The magnon dispersion for such systems plotted with SpinW is twice as small as the result from textbooks 
+        \cite{rezende2020fundamentals, blundell2003magnetism, gurevich1996magnetization, simon2013oxford, coey2010magnetism, jensen1991rare} (conversion from textbook's notations are discussed in Appendix~I). 
+
+        Since there are various notations for the Spin Hamiltonian, which is the starting point for the magnon dispersion calculation, 
+        in this paper all results are presents with respect to the notation of SpinW paper \cite{toth2015linear}:
 
         \begin{equation}
-            \hat{H} = -J \sum_{ij} \hat{\mathbf{S}}_i^T \hat{\mathbf{S}}_j,
-            \label{eq:hh-main}
+            H = \sum_{mi,nj}\boldsymbol{S}^T_{mi}\boldsymbol{J}_{mi, nj}\boldsymbol{S}_{nj} + 
+            \sum_{mi}\boldsymbol{S}^T_{mi}\boldsymbol{A}_{mi}\boldsymbol{S}_{mi} + 
+            \mu_B\boldsymbol{H}^T\sum_{mi}g_i\boldsymbol{S}_{mi},
         \end{equation}
-        where $J$ is an isotropic exchange parameter. The double counting is present in the Hamiltonian, i.e. both terms $i\rightarrow j$ and $j \rightarrow i$ are present in the sum. 
-        $\hat{\mathbf{S}}_i$ is a $3\times1$ column vector of the spin operators $(\hat{\mathbf{S}}_i^x, \hat{\mathbf{S}}_i^y, \hat{\mathbf{S}}_i^z)$. 
-        Index $i$ run over all $N$ sites in the system and index $j$ runs over neighbors for the site $i$. 
+        where double counting is present in the sum and negative $J$ means ferromagnetic alignment. 
+        First term descries exchange interaction, second -- single ion anisotropy, third -- external magnetic field.
+        The indices $m$, $n$ are indexing the crystallographic unit cell (running from $1$ to $L$), while $i$ and $j$ label the magnetic atoms inside unit cell (running from $1$ to $N$).
+        $\boldsymbol{S}_i$ is a $3 \times 1$ column vector of spin operators $\{S_{mi}^x, S_{mi}^y, S_{mi}^z\}$, 
+        $\boldsymbol{J}_{mi, nj}$ is a matrix of exchange parameters, $\boldsymbol{A}_{mi}$ - matrix of single ion anisotropy,  
+        $\boldsymbol{H}$ - column vector of external magnetic field. 
 
-        Bold mathematical symbols in this paper represent vectors or matrices and usual symbols~-- scalars. For instance, $J$ is a scalar exchange parameter, while $\mathbf{J}$ is a matrix of exchange, 
-        for the isotropic case it is defined as
+        For the ferromagnetic 3D crystall with one magnetic center in unit cell the solution of SpinW gives:
 
         \begin{equation}
-            \mathbf{J} =
-            \begin{pmatrix}
-                J & 0 & 0 \\
-                0 & J & 0 \\
-                0 & 0 & J
-            \end{pmatrix}
+            E(\boldsymbol{k}) = \hbar\omega(\boldsymbol{k}) = SJn\left(\dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right) - 1\right),
         \end{equation}
-
-        Several comparisons of the exchange Hamiltonians and consecutive spin wave Hamiltonians are done in this paper 
-        and for each one the details of the convergence are discussed. 
-        The results are present in both ways: the original source and in the definition of this paper, when possible.
-
-    \section{Ferromagnetic cubic system}
-
-        Parameters and they values for the case study system~-- 
-        cubic lattice of ferromagnetic spins oriented along the direction of $z$ axis are defined in this section.
-
-        Lattice (see~Fig.~\ref{fig:lattice}) in cartesian coordinate system is defined by the lattice parameters and angles:
+        where $l$ is the length of lattice parameters. While the textbook's results gives for the same system:
         \begin{equation}
-            \begin{matrix}
-                \mathbf{a} = (l, 0, 0) & \mathbf{b} = (0, l, 0) & \mathbf{c} = (0, 0, l) \\
-                \alpha = 90^{\circ} & \beta = 90^{\circ} & \gamma = 90^{\circ} \\
-            \end{matrix}
-        \end{equation}
-        In each unit cell one spin $\mathbf{S}$ at the position $(0, 0, 0)$ (in relative coordinates) is oriented along z axis.
-        Each spin has 6 neighbors as shown in Fig.~\ref{fig:lattice-neighbors} for the $(0, 0, 0)$ unit cell.
-
-        \begin{figure}[H]
-            \centering
-            \begin{subfigure}[b]{0.49\textwidth}
-                \centering
-                \includegraphics[height=6cm]{lattice.pdf}
-                \caption{}
-            \label{fig:lattice}
-            \end{subfigure}
-            \hfill
-            \begin{subfigure}[b]{0.49\textwidth}
-                \centering
-                \includegraphics[height=6cm]{lattice-neighbors.pdf}
-            \caption{}
-            \label{fig:lattice-neighbors}
-            \end{subfigure}
-            \hfill
-            \caption{(a) Lattice and (b) 6 neighbors for the spin in $(0, 0, 0)$ unit cell.}
-            \label{fig:lattice-both}
-        \end{figure}
-
-
-        The reciprocal lattice is defined as:
-        \begin{equation}
-            \begin{matrix}
-                \mathbf{b_1} = (\dfrac{2\pi}{l}, 0, 0) & \mathbf{b_2} = (0,\dfrac{2\pi}{l}, 0) & \mathbf{b_3} = (0, 0, \dfrac{2\pi}{l}) \\
-                k_{\alpha} = 90^{\circ} & k_{\beta} = 90^{\circ} & k_{\gamma} = 90^{\circ} \\
-            \end{matrix}
+            E(\boldsymbol{k}) = \hbar\omega(\boldsymbol{k}) = 2SJn\left(\dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right) - 1\right). \label{eq:textbook}
         \end{equation}
 
-        Y-$\Gamma$-X-M-$\Gamma$-R-X-M-R path (see~Fig.~\ref{fig:path}) is used for magnon dispersion plots.
+        In the Fig.~\ref{fig:dispersion-comparasion} The magnon dispersion is plotted for both solutions along the k-path specified in \cite{setyawan2010high}, $J = 1$, $S = 1$, $n = 6$.
 
         \begin{figure}[H]
             \centering
             \begin{subfigure}[b]{0.8\textwidth}
                 \centering
-                \includegraphics[height=10cm]{path.pdf}
+                \includegraphics[height=6cm]{main_dispersion.pdf}
             \end{subfigure}
             \hfill
-            \caption{Path for the magnon dispersion plots in reciprocal space: Y-$\Gamma$-X-M-$\Gamma$-R-X-M-R.}
-            \label{fig:path}
+            \caption{Magnon dispersion comparasion between SpinW and textbooks ($J = 1$, $S = 1$).}
+            \label{fig:dispersion-comparasion}
         \end{figure}
 
-
-        For the final results and for the Figs.~\ref{fig:lattice-both}~and~\ref{fig:path} the following numerical values are used:
+        In the SpinW paper \cite{toth2015linear} the solution starts by the two consecutiove rotations, 
+        which results in the rotation of the exchange matrix $\boldsymbol{J}^{\prime}_{mi, nj} = \boldsymbol{J}_{mi, nj}\boldsymbol{R}_{n-m}$ 
+        the definition of the vectors $\boldsymbol{u}$ and $\boldsymbol{v}$.
+        This rotation does not affect the following discussion, therefore we drop the $^{\prime}$ sign in the $\boldsymbol{J}_{mi, nj}$ 
+        and use the complex valued vectors $\boldsymbol{u}$ and $\boldsymbol{v}$, without recalling their definition here. 
+        The unique comment that is important here is that for ferromagnetic case (oriented along $z$ axis) the values of the vectors are:
         \begin{equation}
-            \begin{matrix}
-                J = 1 \text{ meV}, & S = 1, & l = 1, & n = 6
-            \end{matrix}
+            \boldsymbol{u} = (1, i, 0)^T
+        \end{equation}
+        \begin{equation}
+            \boldsymbol{v} = (0, 0, 1)^T
         \end{equation}
 
-        For the 1D chain the values are the same, but $n = 2$.
+        The single-ion anisotropy term and magnetic field term can be merged into the exchange term as explained in the SpinW paper \cite{toth2015linear}.
 
-    \section{Main magnon dispersion}
+    \section{The solution}
 
-        In Appendix~I magnon dispersion is derived from the Hamiltonian in eq.~\eqref{eq:hh-main}.
-        The final result for the cubic system is present in eq.~\ref{eq:main-dispersion} ($n = 6$). 
+    Starting point for the following discusion is equation (20) from the SpinW paper \cite{toth2015linear} 
+    (adjusted with respect to the comment at the end of the previous section):
 
-        \begin{equation}
-            \hbar\omega(\mathbf{k}) = 2JSn\left(1 - 
-            \dfrac{1}{3}\left(\cos(k_x l) + \cos(k_y l) + \cos(k_z l)\right)\right)
-            \label{eq:main-dispersion}
-        \end{equation}
+    \begin{multline}
+        H = \sum_{mi, nj}\left\{\sqrt{\dfrac{S_{i}}{2}}\left(\overline{\boldsymbol{u}}^T_i b_{mi} + \boldsymbol{u}^T_i b^{\dag}_{mi} \right) + 
+        \boldsymbol{v}^T_i(S_i - b^{\dag}_{mi}b_{mi})\right\}  \cdot
+        \boldsymbol{J}_{mi, nj}\\
+        \cdot\left\{\sqrt{\dfrac{S_{j}}{2}}\left(\overline{\boldsymbol{u}}_j b_{nj} + \boldsymbol{u}_j b^{\dag}_{nj} \right) + 
+        \boldsymbol{v}_j(S_j - b^{\dag}_{nj}b_{nj})\right\},
+    \end{multline}
+    where $b^{\dag}_{mi}$ and $b_{mi}$ are the creation and annighilation operators of the local quantum spin deviations. Overline denotes complex conjugate.
 
-        For the 1D chain dispersion law is ($n = 2$)
-        \begin{equation}
-            \hbar\omega(\mathbf{k}) = 2JSn\left(1 - \left(\cos(k_x l)\right)\right)
-            \label{eq:main-dispersion-1D}
-        \end{equation}
+    After the expantion the Hamiltonian Has the zero energy term $E_0$, the term with one-operator terms, expectation value of which vanishes. 
+    And the two-operator term $H^{(2)}$, which is the center of attention in linearised spin-wave theory. 
+    We focus on this term, taking into account the property of the exchange matrix $\boldsymbol{J}_{mi, nj} = \boldsymbol{J}_{i,j}(d)$, $\boldsymbol{d} = \boldsymbol{r}_n - \boldsymbol{r}_m$:
+    \begin{multline}
+        H^{(2)} = \dfrac{\sqrt{S_i S_j}}{2}\left(\overline{\boldsymbol{u}}^T_i\boldsymbol{J}_{i,j}(\boldsymbol{d})\overline{\boldsymbol{u}}_jb_{mi}b_{nj} +
+        \overline{\boldsymbol{u}}^T_i\boldsymbol{J}_{i,j}(\boldsymbol{d})\boldsymbol{u}_j b_{mi}b^{\dag}_{nj}\right. \\+ 
+        \left.\boldsymbol{u}^T_i\boldsymbol{J}_{i,j}(\boldsymbol{d})\overline{\boldsymbol{u}}_jb^{\dag}_{mi}b_{nj} +
+        \boldsymbol{u}^T_i\boldsymbol{J}_{i,j}(\boldsymbol{d})\boldsymbol{u}_jb^{\dag}_{mi}b^{\dag}_{nj}\right) \\-
+        \boldsymbol{v}^T_i\boldsymbol{J}_{i,j}(\boldsymbol{d})\boldsymbol{v}_j\left(S_ib^{\dag}_{nj}b_{nj} + S_jb^{\dag}_{mi}b_{mi}\right)
+    \end{multline}
 
-        It is plotted in Fig.~\ref{fig:main-dispersion} for the path Y-$\Gamma$-X-M-$\Gamma$-R-X-M-R. 
-        The picture is produced with the script <<codes/dispersion.py>> using 
-        <<main\_dispersion>> function.
+    The next step of the solution is to apply forier transformation in order to move from the creation and annighilation operators 
+    of the local quantum spin deviations ($b^{\dag}_{mi}$ and $b_{mi}$) 
+    to the creation and annighilation operators of collective quantum exitations ($b^{\dag}(k)$ and $b(k)$).
+    \begin{equation}
+        b_{mi} = \dfrac{1}{\sqrt{L}}\sum_{\boldsymbol{k} \in \text{B.Z.}} b_i(\boldsymbol{k})e^{i\boldsymbol{k}\boldsymbol{r}_m},
+    \end{equation}
+    \begin{equation}
+        b^{\dag}_{mi} = \dfrac{1}{\sqrt{L}}\sum_{\boldsymbol{k} \in \text{B.Z.}} b^{\dag}_i(\boldsymbol{k})e^{-i\boldsymbol{k}\boldsymbol{r}_m},
+    \end{equation}
 
+    After the Fourier transformation the Hamiltonian has the form:
+    \begin{multline}
+        H^{(2)} = \sum_{ij}\sum_{\boldsymbol{k}}\left[\dfrac{\sqrt{S_i S_j}}{2}\overline{\boldsymbol{u}}^T_i\boldsymbol{J}_{i,j}(\boldsymbol{k})\overline{\boldsymbol{u}}_jb_{i}(\boldsymbol{k})b_{j}(-\boldsymbol{k}) +
+        \dfrac{\sqrt{S_i S_j}}{2} \overline{\boldsymbol{u}}^T_i\boldsymbol{J}_{i,j}(\boldsymbol{k})\boldsymbol{u}_j b_{i}(\boldsymbol{k})b^{\dag}_{j}(\boldsymbol{k})\right. \\+ 
+        \dfrac{\sqrt{S_i S_j}}{2}\boldsymbol{u}^T_i\boldsymbol{J}_{i,j}(-\boldsymbol{k})\overline{\boldsymbol{u}}_jb^{\dag}_{i}(\boldsymbol{k})b_{j}(\boldsymbol{k}) +
+        \dfrac{\sqrt{S_i S_j}}{2}\boldsymbol{u}^T_i\boldsymbol{J}_{i,j}(-\boldsymbol{k})\boldsymbol{u}_jb^{\dag}_{i}(\boldsymbol{k})b^{\dag}_{j}(-\boldsymbol{k}) \\-
+        \left.S_i\boldsymbol{v}^T_i\boldsymbol{J}_{i,j}(\boldsymbol{0})\boldsymbol{v}_jb^{\dag}_{j}(\boldsymbol{k})b_{j}(\boldsymbol{k}) + 
+        S_j\boldsymbol{v}^T_i\boldsymbol{J}_{i,j}(\boldsymbol{0})\boldsymbol{v}_jb^{\dag}_{i}(\boldsymbol{k})b_{i}(\boldsymbol{k})\right]
+    \end{multline}
 
-        \begin{figure}[H]
-            \centering
-            \begin{subfigure}[b]{0.8\textwidth}
-                \centering
-                \includegraphics[height=7cm]{main_dispersion.pdf}
-            \end{subfigure}
-            \hfill
-            \caption{Magnon dispersion plotted with equation~\eqref{eq:main-dispersion}.}
-            \label{fig:main-dispersion}
-        \end{figure}
+    We follow the definitions from the equation (26) of the SpinW paper \cite{toth2015linear}:
+    \begin{equation}
+        \boldsymbol{J}_{i,j}(\boldsymbol{k}) = \sum_{\boldsymbol{d}}\boldsymbol{J}_{i,j}(\boldsymbol{d})e^{-i\boldsymbol{k}\boldsymbol{d}}
+    \end{equation}
+    \begin{equation}
+        A(\boldsymbol{k})^{i,j} = \dfrac{\sqrt{S_i, S_j}}{2}\boldsymbol{u}^T_i\boldsymbol{J}_{i,j}(-\boldsymbol{k})\overline{\boldsymbol{u}}_j,
+    \end{equation}
+    \begin{equation}
+        B(\boldsymbol{k})^{i,j} = \dfrac{\sqrt{S_i, S_j}}{2}\boldsymbol{u}^T_i\boldsymbol{J}_{i,j}(-\boldsymbol{k})\boldsymbol{u}_j,
+    \end{equation}
+    \begin{equation}
+        C(\boldsymbol{k})^{i,j} = C^{i,j} = \delta_{i,j}\sum_{l}S_l \boldsymbol{v}^T_i\boldsymbol{J}_{i, l}(\boldsymbol{0})\boldsymbol{v}_l.
+    \end{equation}
 
-    \section{Literature check}
-        In this section the result from eq.~\eqref{eq:main-dispersion} is compared with the textbook results. 
-        Hamiltonian definitions are compared with the equation~\eqref{eq:hh-main} and conversions are made if necessary, for each source. 
-        Detailed analysis of each source is provided in Appendix~II. In Table~\ref{tab:literature-review} the summary of textbook's review is provided.
+    With this notation Hamiltonian has the form:
+    \begin{multline}
+        H^{(2)} = \sum_{ij}\sum_{\boldsymbol{k}}\left[\overline{B^{i,j}(\boldsymbol{k})}b_{i}(\boldsymbol{k})b_{j}(-\boldsymbol{k}) +
+        \overline{A^{i,j}(\boldsymbol{k})}b_{i}(\boldsymbol{k})b^{\dag}_{j}(\boldsymbol{k})\right. \\+ 
+        A^{i,j}(\boldsymbol{k})b^{\dag}_{i}(\boldsymbol{k})b_{j}(\boldsymbol{k}) +
+        B^{i,j}(\boldsymbol{k})b^{\dag}_{i}(\boldsymbol{k})b^{\dag}_{j}(-\boldsymbol{k}) \\-
+        \left.2 C^{i,j}b^{\dag}_{i}(\boldsymbol{k})b_{i}(\boldsymbol{k})\right]
+    \end{multline}
 
-        \begin{table}[H]
-            \centering
-            \caption{Comparison of magnon dispersion formulas with textbooks (converted to the notation of this paper).}
-            \label{tab:literature-review}
-            \def\arraystretch{2.5}
-            \begin{tabular}{|c|c|}
-                \hline
-                Source                             & Formula                                                                                                        \\ \hline
-                This paper                         & $\hbar\omega(\mathbf{k}) = 2JSn\left(1 - \dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right)\right)$ \\ \hline
-                \cite{rezende2020fundamentals}     & $\hbar\omega(\mathbf{k}) = 2nJS\left(1 - \dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right)\right)$ \\ \hline
-                \cite{blundell2003magnetism}       & $\hbar\omega(\mathbf{k}) = 2nJS\left(1 - \dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right)\right)$ \\ \hline
-                \cite{gurevich1996magnetization}   & $\hbar\omega(\mathbf{k}) = 2SJn\left(1 - \dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right)\right)$ \\ \hline
-                \cite{simon2013oxford}             & $\hbar\omega(\mathbf{k}) = 2JSn\left(1 - \dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right)\right)$ \\ \hline
-                \cite{coey2010magnetism}           & $\hbar\omega(\mathbf{k}) = 2JSn\left(1 - \dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right)\right)$ \\ \hline
-                \cite{jensen1991rare}              & $\hbar\omega(\mathbf{k}) = Sn2J\left(1 - \dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right)\right)$ \\ \hline
-            \end{tabular}
-        \end{table}
+    Next step consist in the rewriting the Hamiltonian in the quadratic form:
+    \begin{equation}
+        H = \sum_{\boldsymbol{k} ?} \boldsymbol{x}^{\dag}(\boldsymbol{k})h(\boldsymbol{k})\boldsymbol{x}(\boldsymbol{k}),
+    \end{equation}
+    
+    There is a question mark near the $\boldsymbol{k}$ under the summ, since that is the place where SpinW solution and what we are coing to do next differ.
+    In the atricle of Colpa \cite{colpa1978diagonalization}, in the textbook by Rezende \cite{rezende2020fundamentals} (page~$83$) 
+    and indirectly in the article of White \cite{white1965diagonalization}, textbook \cite{jensen1991rare} the restriction $\boldsymbol{k} > 0$ is implied, 
+    which means that for each $\boldsymbol{k}$ in the sum $-\boldsymbol{k}$ is not in the sum.
 
+    % \section{SpinW}\label{sec:spinw}
+    %     In this section the method from SpinW paper \cite{toth2015linear} and the results plotted by the code \cite{SpinW} itself are discussed.
 
-    \section{SpinW}\label{sec:spinw}
-        In this section the method from SpinW paper \cite{toth2015linear} and the results plotted by the code \cite{SpinW} itself are discussed.
+    %     First of all, one has to look at the definition of the spin Hamiltonian, which is provided in eq.~(1) of \cite{toth2015linear}:
+    %     \begin{quote}
+    %         We would like to solve the most general magnetic Hamiltonian
+    %         of interacting localized magnetic moments on a periodic lattice
+    %         using LSWT. To accomplish this, a method is necessary that
+    %         can deal with Hamiltonians where the quadratic spin exchange
+    %         interactions are expressed with $3 \times 3$ matrices. In this case
+    %         the exchange energy of two spins will be a matrix product
+    %         $\mathbf{S}_i^T\mathbf{J}\mathbf{S}_j$, where $\mathbf{S}_i$ is a $3 \times 1$ column vector of the spin operators
+    %         $\{S_i^x, S_i^y, S_i^z\}$ of site $i$ and $\mathbf{J}$ is the exchange matrix coupling
+    %         the two sites. $\langle ... \rangle$ Including the external magnetic field and g-tensor, we
+    %         propose to solve the following Hamiltonian:
 
-        First of all, one has to look at the definition of the spin Hamiltonian, which is provided in eq.~(1) of \cite{toth2015linear}:
-        \begin{quote}
-            We would like to solve the most general magnetic Hamiltonian
-            of interacting localized magnetic moments on a periodic lattice
-            using LSWT. To accomplish this, a method is necessary that
-            can deal with Hamiltonians where the quadratic spin exchange
-            interactions are expressed with $3 \times 3$ matrices. In this case
-            the exchange energy of two spins will be a matrix product
-            $\mathbf{S}_i^T\mathbf{J}\mathbf{S}_j$, where $\mathbf{S}_i$ is a $3 \times 1$ column vector of the spin operators
-            $\{S_i^x, S_i^y, S_i^z\}$ of site $i$ and $\mathbf{J}$ is the exchange matrix coupling
-            the two sites. $\langle ... \rangle$ Including the external magnetic field and g-tensor, we
-            propose to solve the following Hamiltonian:
-
-            \begin{equation}
-                H = \sum_{mi,nj} \mathbf{S}_{mi}^T \mathbf{J}_{mi,nj}\mathbf{S}_{nj} 
-                + \sum_{mi} \mathbf{S}_{mi}^T \mathbf{A}_{mi}\mathbf{S}_{mi} + \mu_B\mathbf{H}^T\sum_{mi}g_i\mathbf{S}_{mi}.
-                \tag{(1)}
-            \end{equation}
+    %         \begin{equation}
+    %             H = \sum_{mi,nj} \mathbf{S}_{mi}^T \mathbf{J}_{mi,nj}\mathbf{S}_{nj} 
+    %             + \sum_{mi} \mathbf{S}_{mi}^T \mathbf{A}_{mi}\mathbf{S}_{mi} + \mu_B\mathbf{H}^T\sum_{mi}g_i\mathbf{S}_{mi}.
+    %             \tag{(1)}
+    %         \end{equation}
             
-            The indices $m$, $n$ are indexing the crystallographic unit cell
-            (running from $1$ to $L$), while $i$ and $j$ label the magnetic atoms inside the unit cell (running from $1$ to $N$), $\mathbf{H}$ is the external
-            magnetic field column vector, $\mu_B$ is the Bohr magneton.
-        \end{quote}
+    %         The indices $m$, $n$ are indexing the crystallographic unit cell
+    %         (running from $1$ to $L$), while $i$ and $j$ label the magnetic atoms inside the unit cell (running from $1$ to $N$), $\mathbf{H}$ is the external
+    %         magnetic field column vector, $\mu_B$ is the Bohr magneton.
+    %     \end{quote}
 
-        This definition includes double counting and is the same as in eq.~\eqref{eq:hh-main} with an opposite sign of the exchange constant. 
-        In order to move to the definition of this paper one needs to introduce the following substitution:
-        \begin{equation}
-            J \rightarrow -J \label{eq:spinw-sub}
-        \end{equation}
-        In the case of the cubic system $N = 1$. 
-        On the way of the solution two vectors are introduced: $\mathbf{u}_j$ and $\mathbf{v}_j$,
-        which are defined from the matrix of local rotations $\mathbf{R}^{\prime}_j$. 
-        In the case of the ferromagnetic system no rotation is needed and the local rotation matrix and vectors are 
-        (index $j$ is dropped because there is only one magnetic site in unit cell in cubic ferromagnetic system)
-        \begin{equation}
-            \begin{matrix}
-                \mathbf{R}_j = 
-                \begin{pmatrix}
-                    1 & 0 & 0 \\
-                    0 & 1 & 0 \\
-                    0 & 0 & 1 \\
-                \end{pmatrix}; &
-                \mathbf{u}_j = 
-                \begin{pmatrix}
-                    1 \\
-                    \iu \\
-                    0 \\
-                \end{pmatrix}; &
-                \mathbf{v}_j = 
-                \begin{pmatrix}
-                    0 \\
-                    0 \\
-                    1 \\
-                \end{pmatrix}
-            \end{matrix}
-        \end{equation}
-        As the next step in the paper Hamiltonian is written with the collective creation and annihilation operators in a matrix form (eq.(23) in \cite{toth2015linear}):
-        \begin{equation}
-            H = \sum_{k \in B.Z.}\mathbf{x}^{\dag}(\mathbf{k})\mathbf{h}(\mathbf{k})\mathbf{x}(\mathbf{k})
-        \end{equation}
-        where $\mathbf{x}(\mathbf{k}) = [b(\mathbf{k}), b^{\dag}(-\mathbf{k})]^T$ for the cubic system. 
-        And matrix $\mathbf{h}(\mathbf{k})$ for the cubic system is (definitions in the eqs.~(25)~and~(26)~and(14) of \cite{toth2015linear} are used)
-        \begin{equation}
-            \mathbf{h}(\mathbf{k}) = 
-            \begin{bmatrix}
-                \hbar\omega_1(\mathbf{k}) & 0 \\
-                0 & \hbar\omega_1(-\mathbf{k})
-            \end{bmatrix}
-        \end{equation}
-        with ($n = 6$)
-        \begin{equation}
-            \hbar\omega_1(\mathbf{k}) = SJn\left(\dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right) - 1\right)
-        \end{equation}
-        or in the notation of this paper (substitution~\eqref{eq:spinw-sub})
-        \begin{equation}
-            \hbar\omega_1(\mathbf{k}) = SJn\left(1 - \dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right)\right)
-        \end{equation}
-        which is exactly twice smaller than the result in eq.~\eqref{eq:main-dispersion}.
-        For the general case $\mathbf{h}(\mathbf{k})$ requires further diagonalization, which is discussed in the section~$7$ of \cite{toth2015linear}, 
-        in the case of a simple cubic system diagonalization procedure is not necessary.
-        The final <<diagonalized>> Hamiltonian is 
-        \begin{equation}
-            H = \sum_{\mathbf{k} \in B.Z.}\left(\hbar\omega_1(\mathbf{k})\hat{b}^{\dag}(\mathbf{k})\hat{b}(\mathbf{k}) + \hbar\omega_1(-\mathbf{k})\hat{b}(\mathbf{-k})\hat{b}^{\dag}(\mathbf{-k})\right)
-        \end{equation}
+    %     This definition includes double counting and is the same as in eq.~\eqref{eq:hh-main} with an opposite sign of the exchange constant. 
+    %     In order to move to the definition of this paper one needs to introduce the following substitution:
+    %     \begin{equation}
+    %         J \rightarrow -J \label{eq:spinw-sub}
+    %     \end{equation}
+    %     In the case of the cubic system $N = 1$. 
+    %     On the way of the solution two vectors are introduced: $\mathbf{u}_j$ and $\mathbf{v}_j$,
+    %     which are defined from the matrix of local rotations $\mathbf{R}^{\prime}_j$. 
+    %     In the case of the ferromagnetic system no rotation is needed and the local rotation matrix and vectors are 
+    %     (index $j$ is dropped because there is only one magnetic site in unit cell in cubic ferromagnetic system)
+    %     \begin{equation}
+    %         \begin{matrix}
+    %             \mathbf{R}_j = 
+    %             \begin{pmatrix}
+    %                 1 & 0 & 0 \\
+    %                 0 & 1 & 0 \\
+    %                 0 & 0 & 1 \\
+    %             \end{pmatrix}; &
+    %             \mathbf{u}_j = 
+    %             \begin{pmatrix}
+    %                 1 \\
+    %                 \iu \\
+    %                 0 \\
+    %             \end{pmatrix}; &
+    %             \mathbf{v}_j = 
+    %             \begin{pmatrix}
+    %                 0 \\
+    %                 0 \\
+    %                 1 \\
+    %             \end{pmatrix}
+    %         \end{matrix}
+    %     \end{equation}
+    %     As the next step in the paper Hamiltonian is written with the collective creation and annihilation operators in a matrix form (eq.(23) in \cite{toth2015linear}):
+    %     \begin{equation}
+    %         H = \sum_{k \in B.Z.}\mathbf{x}^{\dag}(\mathbf{k})\mathbf{h}(\mathbf{k})\mathbf{x}(\mathbf{k})
+    %     \end{equation}
+    %     where $\mathbf{x}(\mathbf{k}) = [b(\mathbf{k}), b^{\dag}(-\mathbf{k})]^T$ for the cubic system. 
+    %     And matrix $\mathbf{h}(\mathbf{k})$ for the cubic system is (definitions in the eqs.~(25)~and~(26)~and(14) of \cite{toth2015linear} are used)
+    %     \begin{equation}
+    %         \mathbf{h}(\mathbf{k}) = 
+    %         \begin{bmatrix}
+    %             \hbar\omega_1(\mathbf{k}) & 0 \\
+    %             0 & \hbar\omega_1(-\mathbf{k})
+    %         \end{bmatrix}
+    %     \end{equation}
+    %     with ($n = 6$)
+    %     \begin{equation}
+    %         \hbar\omega_1(\mathbf{k}) = SJn\left(\dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right) - 1\right)
+    %     \end{equation}
+    %     or in the notation of this paper (substitution~\eqref{eq:spinw-sub})
+    %     \begin{equation}
+    %         \hbar\omega_1(\mathbf{k}) = SJn\left(1 - \dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right)\right)
+    %     \end{equation}
+    %     which is exactly twice smaller than the result in eq.~\eqref{eq:main-dispersion}.
+    %     For the general case $\mathbf{h}(\mathbf{k})$ requires further diagonalization, which is discussed in the section~$7$ of \cite{toth2015linear}, 
+    %     in the case of a simple cubic system diagonalization procedure is not necessary.
+    %     The final <<diagonalized>> Hamiltonian is 
+    %     \begin{equation}
+    %         H = \sum_{\mathbf{k} \in B.Z.}\left(\hbar\omega_1(\mathbf{k})\hat{b}^{\dag}(\mathbf{k})\hat{b}(\mathbf{k}) + \hbar\omega_1(-\mathbf{k})\hat{b}(\mathbf{-k})\hat{b}^{\dag}(\mathbf{-k})\right)
+    %     \end{equation}
 
-        Since $[\hat{b}(\mathbf{k})\hat{b}^{\dag}(\mathbf{k})] = 1$
-        \begin{equation}
-            H = \sum_{\mathbf{k} \in B.Z.}\left(\hbar\omega_1(\mathbf{k})\hat{b}^{\dag}(\mathbf{k})\hat{b}(\mathbf{k}) + \hbar\omega_1(-\mathbf{k})\hat{b}^{\dag}(\mathbf{-k})\hat{b}(\mathbf{-k}) + \hbar\omega_1(\mathbf{k})\right)
-            \label{eq:spinw-cub}
-        \end{equation}
-        which does not have the desired form of the Hamiltonian of the collection of independent quasiparticles (magnons)
-        \begin{equation}
-            \hat{H} = E_0 + \sum_{\mathbf{k}}\hbar\omega(\mathbf{k})\hat{b}^{\dag}(\mathbf{k})\hat{b}(\mathbf{k})\label{eq:desired-form}
-        \end{equation}
+    %     Since $[\hat{b}(\mathbf{k})\hat{b}^{\dag}(\mathbf{k})] = 1$
+    %     \begin{equation}
+    %         H = \sum_{\mathbf{k} \in B.Z.}\left(\hbar\omega_1(\mathbf{k})\hat{b}^{\dag}(\mathbf{k})\hat{b}(\mathbf{k}) + \hbar\omega_1(-\mathbf{k})\hat{b}^{\dag}(\mathbf{-k})\hat{b}(\mathbf{-k}) + \hbar\omega_1(\mathbf{k})\right)
+    %         \label{eq:spinw-cub}
+    %     \end{equation}
+    %     which does not have the desired form of the Hamiltonian of the collection of independent quasiparticles (magnons)
+    %     \begin{equation}
+    %         \hat{H} = E_0 + \sum_{\mathbf{k}}\hbar\omega(\mathbf{k})\hat{b}^{\dag}(\mathbf{k})\hat{b}(\mathbf{k})\label{eq:desired-form}
+    %     \end{equation}
     
 
-        \begin{figure}[H]
-            \centering
-            \begin{subfigure}[b]{0.8\textwidth}
-                \centering
-                \includegraphics[height=7cm]{spinw-cub.png}
-            \end{subfigure}
-            \hfill
-            \caption{Magnon dispersion plotted with SpinW.}
-            \label{fig:spinw-cub}
-        \end{figure}
+    %     \begin{figure}[H]
+    %         \centering
+    %         \begin{subfigure}[b]{0.8\textwidth}
+    %             \centering
+    %             \includegraphics[height=7cm]{spinw-cub.png}
+    %         \end{subfigure}
+    %         \hfill
+    %         \caption{Magnon dispersion plotted with SpinW.}
+    %         \label{fig:spinw-cub}
+    %     \end{figure}
 
-        The sum over the Brillouin zone contains the $-\mathbf{k}$ vector for each $\mathbf{k}$ vector, 
-        therefore the eq.\eqref{eq:spinw-cub} can be transformed to the desired form of the eq.~\eqref{eq:desired-form} (the constant energy shift is ignored here):
-        \begin{equation}
-            \begin{aligned}
-                H = \sum_{\mathbf{k} \in B.Z.}\left(\hbar\omega_1(\mathbf{k})\hat{b}^{\dag}(\mathbf{k})\hat{b}(\mathbf{k}) 
-                + \hbar\omega_1(-\mathbf{k})\hat{b}^{\dag}(\mathbf{-k})\hat{b}(\mathbf{-k})\right)\\ 
-                = \sum_{\mathbf{k} \in B.Z.}\left(\hbar(\omega_1(\mathbf{k}) + \omega_1(\mathbf{k}))\hat{b}^{\dag}(\mathbf{k})\hat{b}(\mathbf{k})\right)
-            \end{aligned}
-        \end{equation}
-        Which in the case of the cubic system leads to the same result as in eq.~\eqref{eq:main-dispersion} in the desired form of eq.~\eqref{eq:desired-form}:
-        \begin{equation}
-            \begin{aligned}
-                H = \sum_{\mathbf{k} \in B.Z.}\left(\hbar\omega(\mathbf{k})\hat{b}^{\dag}(\mathbf{k})\hat{b}(\mathbf{k})\right)
-            \end{aligned}
-        \end{equation}
-        where (in notation of SpinW)
-        \begin{equation}
-            \hbar\omega(\mathbf{k}) = 2\hbar \omega_1(\mathbf{k}) = 2SJn\left(\dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right) - 1\right)
-        \end{equation}
+    %     The sum over the Brillouin zone contains the $-\mathbf{k}$ vector for each $\mathbf{k}$ vector, 
+    %     therefore the eq.\eqref{eq:spinw-cub} can be transformed to the desired form of the eq.~\eqref{eq:desired-form} (the constant energy shift is ignored here):
+    %     \begin{equation}
+    %         \begin{aligned}
+    %             H = \sum_{\mathbf{k} \in B.Z.}\left(\hbar\omega_1(\mathbf{k})\hat{b}^{\dag}(\mathbf{k})\hat{b}(\mathbf{k}) 
+    %             + \hbar\omega_1(-\mathbf{k})\hat{b}^{\dag}(\mathbf{-k})\hat{b}(\mathbf{-k})\right)\\ 
+    %             = \sum_{\mathbf{k} \in B.Z.}\left(\hbar(\omega_1(\mathbf{k}) + \omega_1(\mathbf{k}))\hat{b}^{\dag}(\mathbf{k})\hat{b}(\mathbf{k})\right)
+    %         \end{aligned}
+    %     \end{equation}
+    %     Which in the case of the cubic system leads to the same result as in eq.~\eqref{eq:main-dispersion} in the desired form of eq.~\eqref{eq:desired-form}:
+    %     \begin{equation}
+    %         \begin{aligned}
+    %             H = \sum_{\mathbf{k} \in B.Z.}\left(\hbar\omega(\mathbf{k})\hat{b}^{\dag}(\mathbf{k})\hat{b}(\mathbf{k})\right)
+    %         \end{aligned}
+    %     \end{equation}
+    %     where (in notation of SpinW)
+    %     \begin{equation}
+    %         \hbar\omega(\mathbf{k}) = 2\hbar \omega_1(\mathbf{k}) = 2SJn\left(\dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right) - 1\right)
+    %     \end{equation}
 
-        However the SpinW code does plot the energies from eq.~\eqref{eq:spinw-cub}, but multiply the $\hbar\omega_1$ from the second term by $-1$. 
-        In Fig.~\ref{fig:spinw-cub} the dispersion for the same path as in Fig.~\ref{fig:main-dispersion} is plotted. 
-        The picture is produces with the script <<codes/spinw3D.m>>, which is based on the Tutorial 1 from the SpinW website (\url{https://www.spinw.org/tutorials/01tutorial})
+    %     However the SpinW code does plot the energies from eq.~\eqref{eq:spinw-cub}, but multiply the $\hbar\omega_1$ from the second term by $-1$. 
+    %     In Fig.~\ref{fig:spinw-cub} the dispersion for the same path as in Fig.~\ref{fig:main-dispersion} is plotted. 
+    %     The picture is produces with the script <<codes/spinw3D.m>>, which is based on the Tutorial 1 from the SpinW website (\url{https://www.spinw.org/tutorials/01tutorial})
 
-
-    \section{<<Spin Waves and Magnetic Exchange Hamiltonian in CrSBr>>\cite{scheie2022spin}}
-        In this section the fitting of the experimental measurements for magnon dispersion of CrSBr are discussed.
-
-        First of all one has to look at the definition of the Hamiltonian in eq.~(1) of \cite{scheie2022spin}:
-        \begin{quote}
-            \begin{equation}
-                H = \sum_{i,j} J_{\langle ij \rangle} \vec{S}_i \cdot \vec{S}_j
-                \label{eq:exp-ham}
-            \end{equation}
-        \end{quote}
-
-        Double counting is present in this definition (I asked Allen Scheie directly and the answer was yes), 
-        therefore the Hamiltonian is defined in the same way as in eq.~\eqref{eq:hh-main} 
-        with the substitution $J \rightarrow -J$ (and in the same way as in SpinW). 
-
-        There are two processes in the experimental paper, which we are interested in: 
-        \begin{enumerate}
-            \item Fitting of experimental data to obtain J values.
-            \item Plotting of magnon dispersion with SpinW using fitted J values.
-        \end{enumerate}
-        
-        \subsection{Fit of experimental data}
-            The codes of the paper are public (\url{doi.org/10.13139/ORNLNCCS/1869252}) and could be examined. 
-            Codes of our interest are located in the <<CrSB\_Data\&SpinWaveFits>> folder.
-            The script <<FitSpinWaves.ipynb>> fits the spin-wave energies. 
-            In this script several functions from the <<pylib.HeisenbergFMSpinWave>> are used for plotting of magnon branches. 
-            Those functions are written in the file <<pylib/HeisenbergFMSpinWave.py>>.
-            Computation of acoustic and optical branches traces down to the functions <<hw\_ac>> and <<hw\_op>> form this file.
-            Those two functions depend on the function <<scriptJs>> and global variables <<Jz>> and <<qzero>>. 
-            Finally, there is a piece of code from which one could extract dispersion law used for the fit:
-            \begin{python}
-                @njit
-                def scriptJs(qvec, J):
-                    '''create J1 and J2'''
-                    
-                    # Define the q vectors and the energies
-                    qvrlu = qvec*2*np.pi
-                    en1 = np.zeros_like(qvec[:,0], dtype=np.complex128)
-                    en2 = np.zeros_like(qvec[:,0], dtype=np.complex128)
-                    
-                    # Loop through all neighbors
-                    for i in range(len(dists)):
-                        d = dists[i]
-                        if d[-2] >= len(J):  #we got to highest J defined
-                            break
-                        
-                        rmr = d[:3] #distance between sites
-                        Ji = J[int(d[-2])]  #exchange constant
-                        
-                        ### Removed factor of 2 compared to Gd.
-                        if d[-3] == 1: #It's a site-1 to site-1 exchange
-                            en1 += Ji*np.exp(-1j*np.dot(qvrlu,rmr))
-                        elif d[-3] == 2: #It's a site-1 to site-2 exchange
-                            en2 += Ji*np.exp(-1j*np.dot(qvrlu,rmr))
-                        
-                    return en1, en2
-
-                qzero = np.array([[0,0,0]], dtype=np.float64)
-                Jz = 3/2
-                Anisotropy = 0.0
-
-                @njit
-                def hw_ac(qvec, J):
-                    '''accoustic magnon branch. J is a list of exchange values 
-                    from nearest neighbor to further neighbor'''
-                    j10, j20 = scriptJs(qzero, J)
-                    j1, j2 = scriptJs(qvec, J)
-                    return -Jz*(j10 + j20 - j1 - np.abs(j2)) + Anisotropy
-                    
-                @njit
-                def hw_op(qvec, J):
-                    '''optical magnon branch. J is a list of exchange values 
-                    from nearest neighbor to further neighbor'''
-                    j10, j20 = scriptJs(qzero, J)
-                    j1, j2 = scriptJs(qvec, J)
-                    return -Jz*(j10 + j20 - j1 + np.abs(j2)) + Anisotropy
-            \end{python}
-
-            The function <<scriptJs>> prepare $\mathcal{J}(\mathbf{k})$ sum:
-            \begin{equation}
-                \mathcal{J}(\mathbf{k}) = \sum_{\delta_i} J_i e^{-\iu\mathbf{k}\boldsymbol{\delta}_i} 
-            \end{equation}
-            Then functions <<hw\_ac>> and <<hw\_op>> compute dispersion law for the 
-            2 branches, with the equation (for acoustic branch) ($J_z$ in the code is $S$ here):
-            \begin{equation}
-                \hbar\omega(\mathbf{k}) = -S (\mathcal{J}(\mathbf{0}) - \mathcal{J}(\mathbf{k}))
-                \label{eq:exp-disp}
-            \end{equation}
-            which is the same as the formula from <<Rare earth magnetism>>\cite{jensen1991rare} (section~\ref{subsec:rem}) with an additional <<$-$>> sign, 
-            but the definition of the Hamiltonian in this book is different from the one stated 
-            in experimental paper, thus the factor $2$ is missing in the eq.~\eqref{eq:exp-disp}.
-            Therefore with respect to the definition of the Hamiltonian in eq.~\eqref{eq:exp-ham} 
-            the J values in the experimental paper may be overestimated by the factor of $2$.
-
-        \subsection{Plot with SpinW}
-            Plots with SpinW (scripts and input data) are located in <<CrSB\_Data\&SpinWaveFits/SpinW\_code>> folder. 
-            The script, which plots the dispersion of CrSBr is <<CSB\_dispersions.m>>. 
-            It produces the following pictures for the dispersion:
-
-            \begin{figure}[H]
-                \centering
-                \begin{subfigure}[b]{0.8\textwidth}
-                    \centering
-                    \includegraphics[height=14cm]{spinw-exp-before.png}
-                \end{subfigure}
-                \hfill
-                \caption{Magnon dispersion from experimental paper plotted with SpinW.}
-                \label{fig:spinw-exp-before}
-            \end{figure}
-
-            In order to see the second set of branches as in the example of ferromagnetic cubic system (section~\ref{sec:spinw}) The code is slightly modified:
-            line
-            \begin{python}
-                sw_plotspec(csbSpec,'axLim',[0 50],'mode',3,'dE',2,'colorbar',false,'legend',false)
-            \end{python}
-            is substituted with
-            \begin{python}
-                sw_plotspec(csbSpec,'mode',1,'colorbar',false,'legend',false)
-            \end{python}
-            which produces the following picture:
-
-            \begin{figure}[H]
-                \centering
-                \begin{subfigure}[b]{0.8\textwidth}
-                    \centering
-                    \includegraphics[height=14cm]{spinw-exp-after.png}
-                \end{subfigure}
-                \hfill
-                \caption{Magnon dispersion from experimental paper plotted with SpinW (with code modification).}
-                \label{fig:spinw-exp-after}
-            \end{figure}
-
-            One could see that the magnon dispersion (left column) has two sets of branches, 
-            which are equal to each other with one being multiply by $-1$, as it happens with the example of ferromagnetic cubic system.
-            In both cases the values of magnon dispersion are the half of the one from the method of this paper and J values from experimental paper. 
-
-            In conclusion: The SpinW plots are underestimated by the factor $1/2$.
-
-        The final conclusion is that since exchange values are overestimated by the factor of $2$ and magnon dispersion 
-        from SpinW in underestimated by the factor of $1/2$ the results in the experimental paper are consistent with each other ($2 \cdot 1/2 = 1$), 
-        but when one wants to use the J values from experimental paper independently of SpinW code the mismatch of the factor $2$ happens.
-
-    \include{Appendix_I.tex}
 
     \begingroup
     \let\clearpage\relax
-    \include{Appendix_II.tex}
+    \include{Appendix_I.tex}
     \endgroup
 
     \bibliographystyle{plain} 
     \bibliography{refs.bib} 
+
+
     % \section*{References}
     % \printbibliography[title = {\vspace{-2em}}]
 

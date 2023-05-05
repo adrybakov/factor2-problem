@@ -38,7 +38,7 @@ def plot_dispersion(disp_func, name, output_path):
         "X": 0 * b1 + 0.5 * b2 + 0 * b3,
     }
 
-    path = [["Y", "$\Gamma$", "X", "M", "$\Gamma$", "R", "X", "M", "R"]]
+    path = [["$\Gamma$", "X", "M", "$\Gamma$", "R", "X", "M", "R"]]
     labels = []  # Labels of high symmetry points
     labels_c = []  # Coordinates of high symmetry points
     n = 100
@@ -105,10 +105,14 @@ def plot_dispersion(disp_func, name, output_path):
         linewidths=0.5,
     )
     ax.set_xlim(labels_c[0], labels_c[-1])
+    disp_spinw = []
     disp = []
     for i in kvec:
         disp.append(disp_func(i))
-    ax.plot(kvec_c, disp, color="green")
+        disp_spinw.append(disp_func(i)/2)
+    ax.plot(kvec_c, disp,"-", label="Textbooks")
+    ax.plot(kvec_c, disp_spinw, "--" ,label="SpinW")
+    ax.legend(fontsize=15, framealpha=1)
     plt.savefig(f"{output_path}/{name}.pdf", dpi=400, bbox_inches="tight")
 
 
