@@ -17,7 +17,4 @@ clean:
 	-@rm Appendix_I.aux
 
 pictures:
-	@python3 codes/lattice.py -pt lattice -op images
-	@python3 codes/lattice.py -pt lattice-neighbors -op images
-	@python3 codes/reciprocal_lattice.py -op images
 	@python3 codes/dispersion.py -op images
