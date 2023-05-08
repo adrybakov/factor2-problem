@@ -1,0 +1,59 @@
+\section{Appendix II}
+
+First of all, we recall the definitions:
+\begin{equation}
+    \boldsymbol{J}_{i,j}(\boldsymbol{k}) = \sum_{\boldsymbol{d}}\boldsymbol{J}_{i,j}(\boldsymbol{d})e^{-i\boldsymbol{k}\boldsymbol{d}}
+\end{equation}
+\begin{equation}
+    A(\boldsymbol{k})^{i,j} = \dfrac{\sqrt{S_i, S_j}}{2}\boldsymbol{u}^T_i\boldsymbol{J}_{i,j}(-\boldsymbol{k})\overline{\boldsymbol{u}}_j,
+\end{equation}
+\begin{equation}
+    B(\boldsymbol{k})^{i,j} = \dfrac{\sqrt{S_i, S_j}}{2}\boldsymbol{u}^T_i\boldsymbol{J}_{i,j}(-\boldsymbol{k})\boldsymbol{u}_j,
+\end{equation}
+\begin{equation}
+    C(\boldsymbol{k})^{i,j} = C^{i,j} = \delta_{i,j}\sum_{l}S_l \boldsymbol{v}^T_i\boldsymbol{J}_{i, l}(\boldsymbol{0})\boldsymbol{v}_l.
+\end{equation}
+
+There are three statements, that requires proofs:
+\begin{equation}
+    A^{i,j}(\boldsymbol{k}) = \overline{A^{j,i}(\boldsymbol{k})}
+\end{equation}
+\begin{equation}
+    B^{i,j}(\boldsymbol{k}) = B^{j,i}(-\boldsymbol{k})
+\end{equation}
+\begin{equation}
+    C^{i,j} = C^{j,i}
+\end{equation}
+
+Symmetry of the exchange between two sites:
+\begin{equation}
+    J_{i,j}(\boldsymbol{d}) = J_{j,i}^T(-\boldsymbol{d})
+\end{equation}
+which leads to the:
+\begin{equation}
+    J_{i,j}(\boldsymbol{k}) = J_{j,i}^T(-\boldsymbol{k})
+\end{equation}
+
+Then:
+\begin{equation}
+    \overline{A^{j,i}(\boldsymbol{k})} = \dfrac{\sqrt{S_i, S_j}}{2}\overline{\boldsymbol{u}}^T_j\boldsymbol{J}_{j,i}(\boldsymbol{k})\boldsymbol{u}_i = 
+    \dfrac{\sqrt{S_i, S_j}}{2}\overline{\boldsymbol{u}}^T_j\boldsymbol{J}_{i,j}^T(-\boldsymbol{k})\boldsymbol{u}_i
+\end{equation}
+since $\overline{A^{j,i}(\boldsymbol{k})}$ is a complex number, we can transpose it, without modification of the result:
+\begin{equation}
+    \overline{A^{j,i}(\boldsymbol{k})} =  (\dfrac{\sqrt{S_i, S_j}}{2}\overline{\boldsymbol{u}}^T_j\boldsymbol{J}_{i,j}^T(-\boldsymbol{k})\boldsymbol{u}_i)^T =
+    \dfrac{\sqrt{S_i, S_j}}{2}\boldsymbol{u}^T_i\boldsymbol{J}_{i,j}(-\boldsymbol{k})\overline{\boldsymbol{u}}_j = A(\boldsymbol{k})^{i,j}
+\end{equation}
+
+Second one:
+\begin{equation}
+    B^{j,i}(-\boldsymbol{k}) = \dfrac{\sqrt{S_i, S_j}}{2}\boldsymbol{u}^T_j\boldsymbol{J}_{j,i}(\boldsymbol{k})\boldsymbol{u}_i =
+    \dfrac{\sqrt{S_i, S_j}}{2}\boldsymbol{u}^T_j\boldsymbol{J}_{i,j}^T(-\boldsymbol{k})\boldsymbol{u}_i
+\end{equation}
+since $B^{j,i}(-\boldsymbol{k})$ is a complex number, we can transpose it, without modification of the result:
+\begin{equation}
+    B^{j,i}(-\boldsymbol{k}) =  (\dfrac{\sqrt{S_i, S_j}}{2}\boldsymbol{u}^T_j\boldsymbol{J}_{i,j}^T(-\boldsymbol{k})\boldsymbol{u}_i)^T =
+    \dfrac{\sqrt{S_i, S_j}}{2}\boldsymbol{u}^T_i\boldsymbol{J}_{i,j}(-\boldsymbol{k})\boldsymbol{u}_j = B(\boldsymbol{k})^{i,j}
+\end{equation}
+
+$C^{i,j} = C^{j,i}$ because of the kronecker delta in the definition.
