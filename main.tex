@@ -55,7 +55,7 @@
     \small Andrey Rybakov$^1$ and Marco Marino$^2$
 
     \footnotesize $^1$\orcid{0000-0002-9924-3576}
-    \footnotesize $^2$\orcid{xxxx-xxxx-xxxx-xxxx}
+    \footnotesize $^2$\orcid{0009-0002-1669-1953}
     \end{center}
 
     \section{The problem}
@@ -195,7 +195,7 @@
         where
         \begin{equation}
             \boldsymbol{x}(\boldsymbol{k}) = \left[b_1(\boldsymbol{k}), \dots, b_N(\boldsymbol{k}), 
-            b^{\dag}_1(-\boldsymbol{k}), \dots, b^{\dag}_N(-\boldsymbol{k})\right]^T
+            b^{\dag}_1(-\boldsymbol{k}), \dots, b^{\dag}_N(-\boldsymbol{k})\right]^T\label{eq:basis}
         \end{equation}
         and (in the SpinW paper \cite{toth2015linear})
         \begin{equation}
@@ -206,6 +206,12 @@
             \end{pmatrix} \label{eq:h-spinw}
         \end{equation}
         where $^{\dag}$ means hermitian conjugate.
+
+        The writing of the Hamiltonian in the basis \eqref{eq:basis} remind of the mathematical formalism picture of particle and antiparticle, 
+        however this interpretation is not physically justified.
+        Mathematically there is a close connection between the introduction of particle-antiparticle picture and negative energy solutions. 
+        However, in the case linearised spin-wave theory (LSWT) there are no negative energy solutions, 
+        therefore there is no need to utilize particle-antiparticle interpretation.
         
         There is a question mark near the $\boldsymbol{k}$ under the sum, since that is the place where SpinW solution and what we are going to do next differ.
         In the article of Colpa \cite{colpa1978diagonalization}, in the textbook by Rezende \cite{rezende2020fundamentals} (page~$83$) 
@@ -239,7 +245,6 @@
         \end{itemize}
 
         The source of the problem with the equation \eqref{eq:h-spinw} is discussed in the subsection~\ref{sec:spinw}. 
-        Finally, alternative view on the manipulations with the Hamiltonian is given in the subsection~\ref{sec:view}
         
         \subsection{Colpa \cite{colpa1978diagonalization}}\label{sec:colpa}
         
@@ -449,63 +454,11 @@
             which leads to the underestimation of the resulting matrix $h(\boldsymbol{k})$ by the factor of $2$.
     
 
-        \subsection{Another way to look at the mathematical derivation.}\label{sec:view}
-
-            The choice of the representation of the Hamiltonian \eqref{eq:ham-before} in the basis of the pairs 
-            $[b(\boldsymbol{k})$, $b^{\dag}(-\boldsymbol{k})]^T$ is not casual 
-            (we omit indices $i$, $j$ in this subsection, since they are not affecting the discussion).
-            In fact, it reminds the approach used in the fermionic problems \cite{source}, 
-            in order to separate negative and positive energy solutions, 
-            and to interpret the former as antiparticle of the latter. 
-            In this case of collective quantum oscillations (before diagonalization), which are bosonic, 
-            these negative energy solutions are not proper (quasi)antiparticles, 
-            and neither the former ones can be associated to (quasi)particles. 
-            Here we remind that to have (quasi)particles the dispersion relation,  
-            i.e. a free particle Hamiltonian, is required \cite{source}, which is not present before the diagonalization 
-            and neither the separation is sufficient to obtain one (because of the coupling terms 
-            $b(\boldsymbol{k})b(-\boldsymbol{k})$ and $b^{\dag}(\boldsymbol{k})b^{\dag}(-\boldsymbol{k})$).
-
-            However, one can have an idea of the reason for this separation by looking at the diagonalized 
-            Hamiltonian \eqref{eq:colpa-diagonalized} with the operators $[\beta(\boldsymbol{k})$, $\beta^{\dag}(-\boldsymbol{k})]^T$. 
-            If we considered only half of the $\boldsymbol{k}$-vectors as a proper physical description of the system
-            (which is not), we could think of the (quasi)particles and (quasi)antiparticles. 
-            This approach allows us to diagonalize the Hamiltonian,
-            however, it does not represent the physical reality, since the magnons by definition 
-            do not have an associated antiparticle: being defined as the low-level excitations of a not-excited system 
-            (Holstein-Primakoff transformations). In order to construct proper solutions, at this point we have to reintegrate 
-            the <<(quasi)antiparticle>> part into its <<(quasi)particle>> part as it has been done for the Hamiltonian \eqref{eq:colpa-diagonalized}.
-            Note that in the usual antiparticle notation $\beta(-\boldsymbol{k})$ is associated to the creation of a particle 
-            of momentum $\boldsymbol{k}$ and $\beta^{\dag}(-\boldsymbol{k})$ is associated to the annihilation of 
-            a particle of momentum $\boldsymbol{k}$. 
-            
-            Moreover, rewriting the Hamiltonian in the form \eqref{eq:ham-colpa-rewritten} does not expand 
-            the Fock space and does not introduce negative energy solutions. It is only a different form of the hamiltonian, 
-            which does not introduce new physical view. The apparent <<expanded>> Fock space is <<reduced>> to the original Fock space at the end. 
-
-            To sum up, the \textit{diagonalised} Hamiltonian \eqref{eq:colpa-diagonalized} for the $\boldsymbol{k} > 0$ space 
-            (or \eqref{eq:white-diagonalized}, without $1/2$ for the whole $\boldsymbol{k}$ space) can be interpreted as the Hamiltonian of the 
-            (quasi)particle and (quasi)antiparticle, there fore one has to take only the 
-            solution $\boldsymbol{\omega}^{(1)}(\boldsymbol{k})$ as the solution for the (quasi)particle part.
-            However, the result is the same as discussed in sections \ref{sec:colpa} and \ref{sec:white}, 
-            since $\boldsymbol{\omega}^{(1)}(\boldsymbol{k}) = \boldsymbol{\omega}^{(2)}(\boldsymbol{k})$.
-            While, the operators $[b(\boldsymbol{k})$, $b^{\dag}(-\boldsymbol{k})]^T$ \textit{before}
-            diagonalization could not be interpreted as (quasi)particle-(quasi)antiparticle picture, 
-            even if the same mathematical formalism is used for the solution of the Hamiltonian. 
-            At that point the arguments about the coupling <<positive>> and <<negative>> $\boldsymbol{k}$ 
-            are applied as in the sections \ref{sec:colpa} and \ref{sec:white}.
-
     \include{Appendix_I.tex}
 
     \include{Appendix_II.tex}
 
     \bibliographystyle{plain} 
     \bibliography{refs.bib} 
-
-
-
-    % \section*{References}
-    % \printbibliography[title = {\vspace{-2em}}]
-
-
 
 \end{document}
