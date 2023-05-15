@@ -23,9 +23,8 @@
 	linkcolor=black,        
 	citecolor=black,        
 	filecolor=magenta,      
-	urlcolor=black         
+	urlcolor=blue         
 }
-\usepackage{pythonhighlight}
 
 \usepackage[left=2cm,right=2cm,
     top=2cm,bottom=2cm]{geometry}
@@ -44,6 +43,8 @@
   \newcommand{\highlightblue}[1]{%
   \colorbox{blue!50}{$\displaystyle#1$}}
 
+\newcommand{\orcid}[1]{\href{https://orcid.org/#1}{\includegraphics[height=8pt]{orcid_16x16.png}} #1}
+
 
 \begin{document}
 
@@ -51,13 +52,16 @@
     \centering \LARGE SpinW factor 2 problem
 
     \vspace{1cm}
-    \small Andrey Rybakov and Marco Marino
+    \small Andrey Rybakov$^1$ and Marco Marino$^2$
+
+    \footnotesize $^1$\orcid{0000-0002-9924-3576}
+    \footnotesize $^2$\orcid{xxxx-xxxx-xxxx-xxxx}
     \end{center}
 
     \section{The problem}
 
         SpinW \cite{SpinW} results does not reproduce the test case of 1D ferromagnetic chain, neither 3D ferromagnetic cubic crystal. 
-        The magnon dispersion for such systems plotted with SpinW is twice as small as the result from textbooks 
+        The magnon dispersion for such systems plotted with SpinW is twice as small as the results from textbooks 
         \cite{rezende2020fundamentals, blundell2003magnetism, gurevich1996magnetization, simon2013oxford, coey2010magnetism, jensen1991rare, white1983quantum} (conversion from textbook's notations are discussed in Appendix~I). 
 
         Since there are various notations for the spin hamiltonian, which is the starting point for the magnon dispersion calculation, 
@@ -70,7 +74,7 @@
         \end{equation}
         where double counting is present in the sum and negative $J$ means ferromagnetic alignment. 
         First term describes exchange interaction, second -- single ion anisotropy, third -- external magnetic field.
-        The indices $m$, $n$ are indexing the crystallographic unit cell (running from $1$ to $L$), while $i$ and $j$ label the magnetic atoms inside unit cell (running from $1$ to $N$).
+        The indices $m$, $n$ are indexing the crystallographic unit cells (running from $1$ to $L$), while $i$ and $j$ label the magnetic atoms inside unit cell (running from $1$ to $N$).
         $\boldsymbol{S}_i$ is a $3 \times 1$ column vector of spin operators $\{S_{mi}^x, S_{mi}^y, S_{mi}^z\}$, 
         $\boldsymbol{J}_{mi, nj}$ is a matrix of exchange parameters, $\boldsymbol{A}_{mi}$ - matrix of single ion anisotropy,  
         $\boldsymbol{H}$ - column vector of external magnetic field. 
@@ -80,7 +84,7 @@
         \begin{equation}
             E(\boldsymbol{k}) = \hbar\omega(\boldsymbol{k}) = SJn\left(\dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right) - 1\right),
         \end{equation}
-        where $l$ is the length of lattice parameters. While the textbook's results for the same system are:
+        where $l$ is the length of lattice parameters. While the textbook's result for the same system is:
         \begin{equation}
             E(\boldsymbol{k}) = \hbar\omega(\boldsymbol{k}) = 2SJn\left(\dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right) - 1\right). \label{eq:textbook}
         \end{equation}
@@ -98,12 +102,12 @@
             \label{fig:dispersion-comparasion}
         \end{figure}
 
-        In the SpinW paper \cite{toth2015linear} the solution starts by the two consecutive rotations, 
-        One results in the rotation of the exchange matrix $\boldsymbol{J}^{\prime}_{mi, nj} = \boldsymbol{J}_{mi, nj}\boldsymbol{R}_{n-m}$ 
-        and another defines the vectors $\boldsymbol{u}$ and $\boldsymbol{v}$.
-        These rotations do not affect the following discussion, therefore we drop the $^{\prime}$ sign in the $\boldsymbol{J}^{\prime}_{mi, nj}$ 
+        In the SpinW paper \cite{toth2015linear} the solution starts by the two consecutive rotations.
+        First one results in the rotation of the exchange matrix $\boldsymbol{J}^{\prime}_{mi, nj} = \boldsymbol{J}_{mi, nj}\boldsymbol{R}_{n-m}$ 
+        and the second rotation defines the vectors $\boldsymbol{u}$ and $\boldsymbol{v}$.
+        These rotations do not affect the following discussion, therefore, we drop the <<$^{\prime}$>> sign in the $\boldsymbol{J}^{\prime}_{mi, nj}$ 
         and use the complex valued vectors $\boldsymbol{u}$ and $\boldsymbol{v}$, without recalling their definition. 
-        The unique comment that is important here is that for ferromagnetic case (oriented along $z$ axis) the values of the vectors are:
+        The unique important comment is that for ferromagnetic case (oriented along $z$ axis) the values of the vectors are:
         \begin{equation}
             \boldsymbol{u} = (1, i, 0)^T
         \end{equation}
@@ -116,7 +120,7 @@
     \section{The solution}
 
         Starting point for the following discussion is equation (20) from the SpinW paper \cite{toth2015linear} 
-        (adjusted with respect to the comment at the end of the previous section):
+        (adjusted with respect to the comments at the end of the previous section):
 
         \begin{multline}
             H = \sum_{mi, nj}\left\{\sqrt{\dfrac{S_{i}}{2}}\left(\overline{\boldsymbol{u}}^T_i b_{mi} + \boldsymbol{u}^T_i b^{\dag}_{mi} \right) + 
@@ -127,7 +131,7 @@
         \end{multline}
         where $b^{\dag}_{mi}$ and $b_{mi}$ are the creation and annihilation operators of the local quantum spin deviations. Overline denotes complex conjugate.
 
-        After the expansion the Hamiltonian has the zero energy term $E_0$, the one-operator terms, 
+        After the expansion the Hamiltonian has zero the energy term $E_0$, the one-operator terms, 
         and the two-operator term $H^{(2)}$, which is the center of attention in linearised spin-wave theory. 
         We focus on this term, taking into account the property of the exchange matrix $\boldsymbol{J}_{mi, nj} = \boldsymbol{J}_{i,j}(d)$, $\boldsymbol{d} = \boldsymbol{r}_n - \boldsymbol{r}_m$:
         \begin{multline}
@@ -140,7 +144,7 @@
 
         The next step of the solution is to apply Fourier transformation in order to move from the creation and annihilation operators 
         of the local quantum spin deviations ($b^{\dag}_{mi}$ and $b_{mi}$) 
-        to the creation and annihilation operators of the collective quantum excitations ($b^{\dag}(k)$ and $b(k)$).
+        to the creation and annihilation operators of the collective quantum excitations ($b_i^{\dag}(\boldsymbol{k})$ and $b_i(\boldsymbol{k})$).
         \begin{equation}
             b_{mi} = \dfrac{1}{\sqrt{L}}\sum_{\boldsymbol{k} \in \text{B.Z.}} b_i(\boldsymbol{k})e^{i\boldsymbol{k}\boldsymbol{r}_m},
         \end{equation}
@@ -172,7 +176,7 @@
             C(\boldsymbol{k})^{i,j} = C^{i,j} = \delta_{i,j}\sum_{l}S_l \boldsymbol{v}^T_i\boldsymbol{J}_{i, l}(\boldsymbol{0})\boldsymbol{v}_l.
         \end{equation}
 
-        With this notation the Hamiltonian becomes:
+        Within this notation the Hamiltonian becomes:
         \begin{multline}
             H^{(2)} = \sum_{ij}\sum_{\boldsymbol{k}}\left[\overline{B^{i,j}(\boldsymbol{k})}b_{i}(\boldsymbol{k})b_{j}(-\boldsymbol{k}) +
             \overline{A^{i,j}(\boldsymbol{k})}b_{i}(\boldsymbol{k})b^{\dag}_{j}(\boldsymbol{k})\right. \\+ 
@@ -205,38 +209,41 @@
         
         There is a question mark near the $\boldsymbol{k}$ under the sum, since that is the place where SpinW solution and what we are going to do next differ.
         In the article of Colpa \cite{colpa1978diagonalization}, in the textbook by Rezende \cite{rezende2020fundamentals} (page~$83$) 
-        and indirectly in the article of White \cite{white1965diagonalization}, textbook \cite{jensen1991rare} the restriction $\boldsymbol{k} > 0$ is implied, 
+        the restriction $\boldsymbol{k} > 0$ is implied, 
         which means that for each $\boldsymbol{k}$ in the sum $-\boldsymbol{k}$ is not in the sum (it is not in the set of indexes over which the sum is carried out). 
-        Alternatively, in the textbook by White \cite{white1983quantum} 
+        Alternatively, in the article of White \cite{white1965diagonalization} and in the textbook by White and Bayne \cite{white1983quantum} 
         the factor $1/2$ added in front of the quadratic Hamiltonian \eqref{eq:quadratic-form} with no restriction to $\boldsymbol{k}$, 
-        which leads to the same result as with the restriction on $\boldsymbol{k}$ mentioned above.
+        which leads to the same result as with the restriction on $\boldsymbol{k}$ mentioned above. 
+        Finally, in the textbook \cite{jensen1991rare} one of these two details has to be implied, 
+        since the result is the same as in other sources. However, Jensen and Mackintosh do not discuss it explicitly.
 
-        However, SpinW paper \cite{toth2015linear} proceeds to cast the Hamiltonian \eqref{eq:ham-before} into quadratic form \eqref{eq:quadratic-form} without any restriction on $\boldsymbol{k}$,
-        moreover, it is specifically noted under the sum in equation 23 that $\boldsymbol{k} \in \text{B.Z.}$. 
+        In contrary, SpinW paper \cite{toth2015linear} proceeds to cast the Hamiltonian \eqref{eq:ham-before} into quadratic form \eqref{eq:quadratic-form} without any restriction on $\boldsymbol{k}$,
+        moreover, it is specifically noted under the sum in equation 23 that $\boldsymbol{k} \in \text{B.Z.}$.
 
         In the SpinW paper the diagonalization of the quadratic form \eqref{eq:quadratic-form} follows the method by Colpa \cite{colpa1978diagonalization}. 
-        In the code itself the diagonalization method by White \cite{white1983quantum} is mentioned.
-        Let us compare the starting points of Colpa and White with SpinW before diagonalization. 
-
+        In the code itself the diagonalization method by White \cite{white1965diagonalization} is mentioned.
+        We compare the starting points of Colpa and White with SpinW before diagonalization in the next two subsections. 
         In the Hamiltonian \eqref{eq:ham-before} only the part for the $\boldsymbol{k}$ is written explicitly for each $\boldsymbol{k}$ under the sum. 
-        Therefore one needs to add terms for $-\boldsymbol{k}$ in order to construct the form \eqref{eq:ham-colpa}. 
-        There are two ways to do that:
+        Therefore, one needs to add terms for $-\boldsymbol{k}$ in order to construct the form \eqref{eq:ham-colpa}. 
+        There are two ways to do it:
 
         \begin{itemize}
-            \item To restrict ourselves to the $\boldsymbol{k} > 0$ and rewrite the Hamiltonian. 
-            This approach can be interpreted as the separation of the space into $\boldsymbol{k} > 0$ and $\boldsymbol{k} < 0$ parts and the solution. 
+            \item To restrict the sum to the $\boldsymbol{k} > 0$ and rewrite the Hamiltonian. 
+            This approach can be interpreted as the separation of the space into $\boldsymbol{k} > 0$ and $\boldsymbol{k} < 0$ parts. 
             We focus on this approach in the subsection~\ref{sec:colpa}, where we follow the solution of Colpa \cite{colpa1978diagonalization}.
 
             \item To keep the whole set of $\boldsymbol{k}$ and add $\sum_{-\boldsymbol{k}}$ to the Hamiltonian.
-            This approach can be interpreted as the artificial addition of the Hamiltonian with the magnons propagating back in time for every $\boldsymbol{k}$.
+            This approach can be interpreted as the artificial doubling of the $\boldsymbol{k}$ space 
+            with the consecutive multiplication by the factor of $1/2$, which keeps the HAmiltonian the same. 
             We discuss this approach in the subsection~\ref{sec:white}, where we follow the solution of White and Bayne \cite{white1983quantum}.
         \end{itemize}
 
-        The source of the problem with the equation \eqref{eq:h-spinw} is discussed in the subsection~\ref{sec:spinw}.
+        The source of the problem with the equation \eqref{eq:h-spinw} is discussed in the subsection~\ref{sec:spinw}. 
+        Finally, alternative view on the manipulations with the Hamiltonian is given in the subsection~\ref{sec:view}
         
         \subsection{Colpa \cite{colpa1978diagonalization}}\label{sec:colpa}
         
-            Colpa discusses the diagonalization of the Bogoliubov Hamiltonian of the form:
+            Colpa discusses the diagonalization of the Bogolyubov Hamiltonian of the form:
 
             \begin{equation}
                 H = \sum_{r^{\prime}, r = 1}^m \left(\alpha_{r^{\prime}}^{\dag}\Delta_{1r^{\prime}r}\alpha_r +
@@ -244,17 +251,16 @@
                 \alpha_{m + r^{\prime}}\Delta_{3r^{\prime}r}\alpha_r +
                 \alpha_{m + r^{\prime}}\Delta_{4r^{\prime}r}\alpha_{m + r}^{\dag}\right), \label{eq:ham-colpa}
             \end{equation}
-            with the following comment on the possible nature of the indices $r$ and $m+r$:
+            with the following comment on the nature of the indices $r$ and $m+r$:
             \begin{quote}
                 The reason why we consider first eq $(2.1)$ is that it often occurs in practice 
-                [in solid-state physics e.g. all operators with indes $r$ correspond to the same wave vector $\boldsymbol{k}$, 
+                [in solid-state physics e.g. all operators with indices $r$ correspond to the same wave vector $\boldsymbol{k}$, 
                 those with $m+r$ to $-\boldsymbol{k}$; $m$ denotes the number of degrees of freedom in the unit cell (or less)] 
             \end{quote}
 
             We have just the case of the solid-state physics. Note, that in the Hamiltonian \eqref{eq:ham-colpa} the sum is carried out over $m$ and not $2m$, 
-            which means that in the sum the terms with $\boldsymbol{k}$ and $-\boldsymbol{k}$ are written explicitly. 
-
-            First of all, we write the Hamiltonian in a more compact form:
+            which means that the terms with $\boldsymbol{k}$ and $-\boldsymbol{k}$ are written explicitly in the sum. 
+            First of all, we write the Hamiltonian in a compact form:
             \begin{multline}
                 H^{(2)} = \sum_{ij}\sum_{\boldsymbol{k}}\left[2(A^{i,j}(\boldsymbol{k}) - C^{i,j})b^{\dag}_{i}(\boldsymbol{k})b_{j}(\boldsymbol{k}) + 
                 \overline{B^{i,j}(\boldsymbol{k})}b_{i}(\boldsymbol{k})b_{j}(-\boldsymbol{k}) +
@@ -264,7 +270,7 @@
                 + const, \label{eq:ham-simple}
             \end{multline}
             where we used the fact that $\boldsymbol{A}(\boldsymbol{k})$ is Hermitian (see Appendix II) and the commutator $[b_{i}(\boldsymbol{k})b^{\dag}_{j}(\boldsymbol{k})] = \delta_{i,j}$. 
-            In the following we omit the terms of the constant energy shift. Next tep is to imply constrain of $\boldsymbol{k}>0$:
+            In the following we omit the terms of the constant energy shift. Next step is to imply $\boldsymbol{k}>0$:
 
             \begin{multline}
                 H^{(2)} = \sum_{ij}\sum_{\boldsymbol{k} > 0} \left(H^{i,j}(\boldsymbol{k}) + H^{i,j}(-\boldsymbol{k})\right) \\
@@ -273,21 +279,21 @@
                 B^{i,j}(\boldsymbol{k})b^{\dag}_{i}(\boldsymbol{k})b^{\dag}_{j}(-\boldsymbol{k})\right. \\
                 +\left.2(A^{i,j}(-\boldsymbol{k}) - C^{i,j})b^{\dag}_{i}(-\boldsymbol{k})b_{j}(-\boldsymbol{k}) + 
                 \overline{B^{i,j}(-\boldsymbol{k})}b_{i}(-\boldsymbol{k})b_{j}(\boldsymbol{k}) +
-                B^{i,j}(-\boldsymbol{k})b^{\dag}_{i}(-\boldsymbol{k})b^{\dag}_{j}(\boldsymbol{k})\right]
+                B^{i,j}(-\boldsymbol{k})b^{\dag}_{i}(-\boldsymbol{k})b^{\dag}_{j}(\boldsymbol{k})\right]\label{eq:ham-colpa-rewritten}
             \end{multline}
 
             We rewrite this Hamiltonian in the form directly comparable with the quadratic form \eqref{eq:quadratic-form} 
             (here the relation $B^{i,j}(\boldsymbol{k}) + B^{j,i}(-\boldsymbol{k}) = 2B^{i,j}(\boldsymbol{k})$, 
             the Hermicity of $\boldsymbol{A}(\boldsymbol{k})$ and $C^{i,j} = C^{j,i}$ is used, see Appendix II):
             \begin{multline}
-                H^{(2)} = \sum_{ij}\sum_{\boldsymbol{k}}\left[2(A^{i,j}(\boldsymbol{k}) - C^{i,j})b^{\dag}_{i}(\boldsymbol{k})b_{j}(\boldsymbol{k})\right] \\
+                H^{(2)} = \sum_{ij}\sum_{\boldsymbol{k} > 0}\left[2(A^{i,j}(\boldsymbol{k}) - C^{i,j})b^{\dag}_{i}(\boldsymbol{k})b_{j}(\boldsymbol{k})\right] \\
                 +(\overline{B^{j,i}(\boldsymbol{k})} + \overline{B^{i,j}(-\boldsymbol{k})})b_i(\boldsymbol{k})b_{j}(-\boldsymbol{k}) \\
                 +(B^{i,j}(\boldsymbol{k}) + B^{j,i}(-\boldsymbol{k}))b^{\dag}_{i}(\boldsymbol{k})b^{\dag}_{j}(-\boldsymbol{k})\\
                 +\left.2(A^{j,i}(-\boldsymbol{k}) - C^{j,i})b_{i}(-\boldsymbol{k})b^{\dag}_{j}(-\boldsymbol{k})\right] + const\\
                 = \sum_{ij}\sum_{\boldsymbol{k}}\left[2(A^{i,j}(\boldsymbol{k}) - C^{i,j})b^{\dag}_{i}(\boldsymbol{k})b_{j}(\boldsymbol{k})\right] \\
                 +2\overline{B^{j,i}(\boldsymbol{k})}b_i(\boldsymbol{k})b_{j}(-\boldsymbol{k}) \\
                 +2B^{i,j}(\boldsymbol{k})b^{\dag}_{i}(\boldsymbol{k})b^{\dag}_{j}(-\boldsymbol{k})\\
-                +\left.2(\overline{A^{i,j}(-\boldsymbol{k})} - C^{i,j})b_{i}(-\boldsymbol{k})b^{\dag}_{j}(-\boldsymbol{k})\right] + const
+                +\left.2(\overline{A^{i,j}(-\boldsymbol{k})} - C^{i,j})b_{i}(-\boldsymbol{k})b^{\dag}_{j}(-\boldsymbol{k})\right] + const 
             \end{multline}
             Thus, the matrix $h(\boldsymbol{k})$ is:
             \begin{equation}
@@ -297,30 +303,28 @@
                     2\boldsymbol{B}^{\dag}(\boldsymbol{k}) & 2(\overline{\boldsymbol{A}(-\boldsymbol{k})} - \boldsymbol{C}) \\
                 \end{pmatrix},\label{eq:matrix-colpa}
             \end{equation}
-            solution of which are the same as in SpinW, but multiplied by the factor $2$ and matches the textbook results. After the diagonalization the matrix is:
+            solution of which is the same as in SpinW, but multiplied by the factor $2$ and matches with the textbook results. After the diagonalization the matrix is:
 
             \begin{equation}
-                h(\boldsymbol{k}) = 
+                h^{\prime}(\boldsymbol{k}) = 
                 \begin{pmatrix}
                     \boldsymbol{\omega}^{(1)}(\boldsymbol{k}) & 0 \\
                     0 & \boldsymbol{\omega}^{(2)}(-\boldsymbol{k}) \\
                 \end{pmatrix}, 
             \end{equation}
-            where $\boldsymbol{\omega}$ is an $N\times N$  diagonal matrix. And the diagonalized Hamiltonian looks like (up to a constant term):
+            where $\boldsymbol{\omega}$ is a $N\times N$  diagonal matrix. Diagonalized Hamiltonian looks like (up to a constant term):
             \begin{equation}
                 H^{(2)} = \sum_{i}\sum_{\boldsymbol{k} > 0}\left(\omega_i^{(1)}(\boldsymbol{k})\beta^{\dag}_i(\boldsymbol{k})\beta_i(\boldsymbol{k}) + 
-                \omega_i^{(2)}(-\boldsymbol{k})\beta^{\dag}_i(-\boldsymbol{k})\beta_i(-\boldsymbol{k})\right),
+                \omega_i^{(2)}(-\boldsymbol{k})\beta^{\dag}_i(-\boldsymbol{k})\beta_i(-\boldsymbol{k})\right), \label{eq:colpa-diagonalized}
             \end{equation}
             with the magnon Hamiltonian being:
             \begin{equation}
-                H^{(2)} = \sum_{i}\sum_{\boldsymbol{k} > 0}\omega_i^{(1)}(\boldsymbol{k})\beta^{\dag}_i(\boldsymbol{k})\beta_i(\boldsymbol{k}) + 
+                H_{magnon} = \sum_{i}\sum_{\boldsymbol{k} > 0}\omega_i^{(1)}(\boldsymbol{k})\beta^{\dag}_i(\boldsymbol{k})\beta_i(\boldsymbol{k}) + 
                 \sum_{i}\sum_{\boldsymbol{k} < 0}\omega_i^{(2)}(\boldsymbol{k})\beta^{\dag}_i(\boldsymbol{k})\beta_i(\boldsymbol{k}).
             \end{equation}
 
             Here the magnon dispersion is $E_i(\boldsymbol{k}) = \hbar \omega_i^{(1)}(\boldsymbol{k})$ for $\boldsymbol{k} > 0$ and 
             $E_i(\boldsymbol{k}) = \hbar \omega_i^{(2)}(\boldsymbol{k})$ for $\boldsymbol{k} <0$.
-            
-            
             For the ferromagnetic cubic lattice:
             \begin{equation}
                 E(\boldsymbol{k}) = 
@@ -328,11 +332,11 @@
                 \hbar \omega_i^{(2)}(\boldsymbol{k}) = 
                 2SJn\left(\dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right) - 1\right),
             \end{equation}
-            which is the same as textbooks result.
+            which is the same as textbook's result.
 
 
-            One question remains: the nature of the restriction $ \boldsymbol{k} > 0$. It means that the positive and negative $\boldsymbol{k}$ vectors should be separated, 
-            but it does not require any particular form of separation. In $3D$ there are 3 simple non-equivalent separation, 
+            One question remains: the nature of the restriction $ \boldsymbol{k} > 0$. It means that the <<positive>> and <<negative>> $\boldsymbol{k}$ vectors should be separated, 
+            but it does not require any particular form of separation. In $3\text{D}$ there are 3 simple non-equivalent separation, 
             which straightforwardly comes to mind: $k_x > 0$, $k_y > 0$ and $k_z > 0$, and one could construct more. 
             The meaning of the separation is that if one think of the $-\boldsymbol{k}$ as $\boldsymbol{k}$ and about $\boldsymbol{k}$ as about $-\boldsymbol{k}$, 
             then the solution is the same, and $\omega^{(1)}(\boldsymbol{k})$ describes the spectra with $\boldsymbol{k} < 0$ 
@@ -350,13 +354,12 @@
         \subsection{White and Bayne}\label{sec:white}
             White and Bayne discuss the diagonalization of the Hamiltonian with dipole-dipole interaction in the book \cite{white1983quantum}. 
             It includes the same math and ideas as the one we need to use for the solution of the Hamiltonian \eqref{eq:ham-before}.
-
             The quadratic form in this case is (page $246$, equation $(8.41)$):
             \begin{equation}
                 H = \dfrac{1}{2} \sum_{\boldsymbol{k}} \boldsymbol{x}^{\dag}_{\boldsymbol{k}} H_{\boldsymbol{k}} \boldsymbol{x}_{\boldsymbol{k}} \label{eq:white-quadratic-form}
             \end{equation}
 
-            And the Hamiltonian, which requires diagonalization (page $246$, equation $(8.40)$):
+            And the Hamiltonian, which requires diagonalization (page $246$, equation $(8.40)$) is:
             \begin{equation}
                 H = E_0 + \sum_{\boldsymbol{k}} \left(A_{\boldsymbol{k}}a^{\dag}_{\boldsymbol{k}}a_{\boldsymbol{k}} + 
                 B_{\boldsymbol{k}}a_{\boldsymbol{k}}a_{-\boldsymbol{k}} + 
@@ -365,7 +368,7 @@
 
             From those two equations one can deduct the following. The terms with $a_{\boldsymbol{k}}a_{-\boldsymbol{k}}$ 
             and $a^{\dag}_{\boldsymbol{k}}a^{\dag}_{-\boldsymbol{k}}$ are introducing the coupling between $+\boldsymbol{k}$ and $-\boldsymbol{k}$,
-            therefore in order to solve the Hamiltonian one has to consider the Hamiltonian for positive and negative value of \textbf{each} $\boldsymbol{k}$.
+            therefore in order to solve the Hamiltonian one has to consider the Hamiltonian for <<positive>> and <<negative>> value of \textbf{each} $\boldsymbol{k}$.
             
             First of all we rewrite the Hamiltonian in a compact form, introducing the notations for this subsection:
 
@@ -388,9 +391,9 @@
                 H = \dfrac{1}{2}\sum_{\boldsymbol{k}} \left[\boldsymbol{H}(\boldsymbol{k}) + \boldsymbol{H}(-\boldsymbol{k})\right],
             \end{equation}
             which is effectively leads to the same math as in \ref{sec:colpa} and results in the quadratic form \eqref{eq:white-quadratic-form} 
-            with the matrix $H_{\boldsymbol{k}}$ as in \eqref{eq:matrix-colpa}. And to the same result for the diagonalized Hamiltonian:
+            with the matrix $h(\boldsymbol{k})$ as in \eqref{eq:matrix-colpa}. And to the same result for the diagonalized Hamiltonian:
             \begin{equation}
-                h(\boldsymbol{k}) = 
+                h^{\prime}(\boldsymbol{k}) = 
                 \begin{pmatrix}
                     \boldsymbol{\omega}^{(1)}(\boldsymbol{k}) & 0 \\
                     0 & \boldsymbol{\omega}^{(2)}(-\boldsymbol{k}) \\
@@ -398,12 +401,12 @@
             \end{equation}
             \begin{equation}
                 H^{(2)} = \dfrac{1}{2}\sum_{i,j}\sum_{\boldsymbol{k}}\left(\omega_i^{(1)}(\boldsymbol{k})\beta^{\dag}_i(\boldsymbol{k})\beta_i(\boldsymbol{k}) + 
-                \omega_i^{(2)}(-\boldsymbol{k})\beta^{\dag}_i(-\boldsymbol{k})\beta_i(-\boldsymbol{k})\right)
+                \omega_i^{(2)}(-\boldsymbol{k})\beta^{\dag}_i(-\boldsymbol{k})\beta_i(-\boldsymbol{k})\right) \label{eq:white-diagonalized}
             \end{equation}
 
             With the magnon Hamiltonian to be:
             \begin{equation}
-                H^{magnon} = \sum_{i,j}\sum_{\boldsymbol{k}}\dfrac{1}{2}(\omega_i^{(1)}(\boldsymbol{k}) + \omega_i^{(2)}(\boldsymbol{k}))
+                H_{magnon} = \sum_{i,j}\sum_{\boldsymbol{k}}\dfrac{1}{2}(\omega_i^{(1)}(\boldsymbol{k}) + \omega_i^{(2)}(\boldsymbol{k}))
                 \beta^{\dag}_i(\boldsymbol{k})\beta_i(\boldsymbol{k})
             \end{equation}
 
@@ -420,47 +423,13 @@
                 2SJn\left(\dfrac{1}{3}\left(\cos(k_xl) + \cos(k_yl) + \cos(k_zl)\right) - 1\right),
             \end{equation}
             which is the same as textbooks result.
-
-        \subsection{Another way to look at the mathematical derivation.}
-
-            The choice of the representation of the Hamiltonian in the basis of the pairs 
-            ($b(\boldsymbol{k})$, $b^{\dag}(-\boldsymbol{k})$) is not casual; 
-            in fact, it remembers the approach used in the fermionic problems, 
-            in order to separate negative and positive energy solutions, 
-            and to interpret the former as antiparticle of the latter. 
-            In this case these negative energy solutions are not properly antiparticles, 
-            and neither the former ones can be associated to particles. 
-            Here we remind that to have particles we need a dispersion relation, 
-            i.e. a free particle hamiltonian; that we still do not have at this point 
-            of the derivation; and neither the separation is sufficient to obtain one: 
-            being defined the last diagonalized hamiltonian in this case only for half of the k-vectors. 
-            If we considered only half of the k-vectors as a proper physical description of the system, 
-            which is not, we could talk of preper particles and antiparticles; 
-            but it would not still represent the physical reality: because the magnons for definition 
-            can not have an associated antiparticle: being defined as the excitations of a not-excited system 
-            (Holstein-Primakoff transformations). However, this approach allows us to diagonlize the hamiltonian; 
-            but in order to have proper solutions, at this point we have to reintegrate 
-            the <<antiparticle>> part into its <<particle>> part. Note that in the usual 
-            antiparticle notation $b(-\boldsymbol{k})$ is associated to the creation of a particle 
-            of momentum $\boldsymbol{k}$ and $b^{\dag}(-\boldsymbol{k})$ is associated to the annihilation of 
-            a particle of momentum $\boldsymbol{k}$. Moreover, we still remind that we are not expanding 
-            the Fock space, not having negative energy solutions (being the operator: bosonic operators 
-            and so commuting operators; there is not a minus in front of the energy), 
-            i.e. being our Fermi see really vacuum; it is only a different writing of the hamiltonian, 
-            which does not introduce new physical views on the picture; and the apparent expanded 
-            Fock space is at the end reduced to the original Fock space. Obviously, 
-            here we are not considering the Bogolioubov transformation, the diagonalization itself, 
-            which is really introducing a new physical view, the magnon; and we have not underlined 
-            maybe sufficiently as the operators before the diagonalization does not represent a proper 
-            physical reality, in spite of our above attempt to interpret them.
-
         \subsection{SpinW solution}\label{sec:spinw}
-
+    
             We suspect that the source of the SpinW paper \cite{toth2015linear} mistake lies in the construction of the matrix $h(\boldsymbol{k})$. 
             The diagonalization of the bosonic Hamiltonian with the terms mixing $\pm\boldsymbol{k}$
             requires to have the term with $-\boldsymbol{k}$, for each $\boldsymbol{k}$, even for the negative ones, 
             which means that for some particular $\boldsymbol{k_0}$ one has to add the Hamiltonian for $-\boldsymbol{k_0}$ \textbf{and} 
-            for $-\boldsymbol{k_0}$ one is required to add the Hamiltonian for $\boldsymbol{k_0}$. What we suppose happened with the derivation of \eqref{eq:h-spinw} 
+            for $-\boldsymbol{k_0}$ one is required to add the Hamiltonian for $\boldsymbol{k_0}$. Instead, what we suppose happened with the derivation of \eqref{eq:h-spinw} 
             from \eqref{eq:ham-before} is the following:
             \begin{multline}
                 H^{(2)} = \sum_{ij}\sum_{\boldsymbol{k}}\left[\overline{B^{i,j}(\boldsymbol{k})}b_{i}(\boldsymbol{k})b_{j}(-\boldsymbol{k}) +
@@ -475,25 +444,56 @@
                 \left.\highlightblue{ -C^{i,j}b^{\dag}_{i}(\boldsymbol{k})b_{j}(\boldsymbol{k}) - C^{i,j}b^{\dag}_{i}(-\boldsymbol{k})b_{j}(-\boldsymbol{k})}\right],\\
             \end{multline}
             which is algebraically correct, since $-\boldsymbol{k}$ is present in the sum for each $\boldsymbol{k}$, however, 
-            it effectively take part of the $\boldsymbol{H}(\boldsymbol{k})$ Hamiltonian and substitute it with the corresponding part of the $\boldsymbol{H}(-\boldsymbol{k})$ Hamiltonian, 
+            it effectively takes part of the $\boldsymbol{H}(\boldsymbol{k})$ Hamiltonian and substitutes it 
+            with the corresponding part of the $\boldsymbol{H}(-\boldsymbol{k})$ Hamiltonian, 
             which leads to the underestimation of the resulting matrix $h(\boldsymbol{k})$ by the factor of $2$.
-
-
- 
-        \subsection{leftovers}
-            Important comment for this section, which is also a link to the next one is the origin of the necessary movement to the quadratic form \eqref{eq:quadratic-form} from the plain Hamiltonian.
-            The operator $b^{\dag}_i(-\boldsymbol{k})$, which creates magnon propagating forward in time with the negative vector $-\boldsymbol{k}$ can be equivalently described as the operator
-            $a_i(\boldsymbol{k})$, which annihilates the magnon propagating backward in time with the positive vector $\boldsymbol{k}$. 
-            Thus, the operator $\boldsymbol{x}_i^{\dag}(\boldsymbol{k}) = [b^{\dag}_i(\boldsymbol{k}), b_i(-\boldsymbol{k})]$ can be viewed as 
-            $\boldsymbol{x}_i^{\dag}(\boldsymbol{k}) = [b^{\dag}_i(\boldsymbol{k}), a^{\dag}_i(\boldsymbol{k})]$,
-            which creates two magnons propagating forward and backward in time with the vector $\boldsymbol{k}$. In the next section the we discuss the other approach.
-
-            Note that we take only the first $N$ energies out of the $2N$ energies from the 
-            diagonalization of the $2N\times 2N$ matrix. The reasoning is the same as in SpinW paper \cite{toth2015linear}, 
-            or in the book of White \cite{white1983quantum}, or in book of Tyablikov \cite{Tyablikov1975methods}: 
-            We are solving the matrix, which contains the terms both for $\boldsymbol{k}$ and $-\boldsymbol{k}$, therefore first $N$ eigenvalues are positive and describe the creation of magnons, 
-            and the second N are negative and describe annihilation of magnons. After the diagonalization the matrix is:
     
+
+        \subsection{Another way to look at the mathematical derivation.}\label{sec:view}
+
+            The choice of the representation of the Hamiltonian \eqref{eq:ham-before} in the basis of the pairs 
+            $[b(\boldsymbol{k})$, $b^{\dag}(-\boldsymbol{k})]^T$ is not casual 
+            (we omit indices $i$, $j$ in this subsection, since they are not affecting the discussion).
+            In fact, it reminds the approach used in the fermionic problems \cite{source}, 
+            in order to separate negative and positive energy solutions, 
+            and to interpret the former as antiparticle of the latter. 
+            In this case of collective quantum oscillations (before diagonalization), which are bosonic, 
+            these negative energy solutions are not proper (quasi)antiparticles, 
+            and neither the former ones can be associated to (quasi)particles. 
+            Here we remind that to have (quasi)particles the dispersion relation,  
+            i.e. a free particle Hamiltonian, is required \cite{source}, which is not present before the diagonalization 
+            and neither the separation is sufficient to obtain one (because of the coupling terms 
+            $b(\boldsymbol{k})b(-\boldsymbol{k})$ and $b^{\dag}(\boldsymbol{k})b^{\dag}(-\boldsymbol{k})$).
+
+            However, one can have an idea of the reason for this separation by looking at the diagonalized 
+            Hamiltonian \eqref{eq:colpa-diagonalized} with the operators $[\beta(\boldsymbol{k})$, $\beta^{\dag}(-\boldsymbol{k})]^T$. 
+            If we considered only half of the $\boldsymbol{k}$-vectors as a proper physical description of the system
+            (which is not), we could think of the (quasi)particles and (quasi)antiparticles. 
+            This approach allows us to diagonalize the Hamiltonian,
+            however, it does not represent the physical reality, since the magnons by definition 
+            do not have an associated antiparticle: being defined as the low-level excitations of a not-excited system 
+            (Holstein-Primakoff transformations). In order to construct proper solutions, at this point we have to reintegrate 
+            the <<(quasi)antiparticle>> part into its <<(quasi)particle>> part as it has been done for the Hamiltonian \eqref{eq:colpa-diagonalized}.
+            Note that in the usual antiparticle notation $\beta(-\boldsymbol{k})$ is associated to the creation of a particle 
+            of momentum $\boldsymbol{k}$ and $\beta^{\dag}(-\boldsymbol{k})$ is associated to the annihilation of 
+            a particle of momentum $\boldsymbol{k}$. 
+            
+            Moreover, rewriting the Hamiltonian in the form \eqref{eq:ham-colpa-rewritten} does not expand 
+            the Fock space and does not introduce negative energy solutions. It is only a different form of the hamiltonian, 
+            which does not introduce new physical view. The apparent <<expanded>> Fock space is <<reduced>> to the original Fock space at the end. 
+
+            To sum up, the \textit{diagonalised} Hamiltonian \eqref{eq:colpa-diagonalized} for the $\boldsymbol{k} > 0$ space 
+            (or \eqref{eq:white-diagonalized}, without $1/2$ for the whole $\boldsymbol{k}$ space) can be interpreted as the Hamiltonian of the 
+            (quasi)particle and (quasi)antiparticle, there fore one has to take only the 
+            solution $\boldsymbol{\omega}^{(1)}(\boldsymbol{k})$ as the solution for the (quasi)particle part.
+            However, the result is the same as discussed in sections \ref{sec:colpa} and \ref{sec:white}, 
+            since $\boldsymbol{\omega}^{(1)}(\boldsymbol{k}) = \boldsymbol{\omega}^{(2)}(\boldsymbol{k})$.
+            While, the operators $[b(\boldsymbol{k})$, $b^{\dag}(-\boldsymbol{k})]^T$ \textit{before}
+            diagonalization could not be interpreted as (quasi)particle-(quasi)antiparticle picture, 
+            even if the same mathematical formalism is used for the solution of the Hamiltonian. 
+            At that point the arguments about the coupling <<positive>> and <<negative>> $\boldsymbol{k}$ 
+            are applied as in the sections \ref{sec:colpa} and \ref{sec:white}.
+
     \include{Appendix_I.tex}
 
     \include{Appendix_II.tex}
