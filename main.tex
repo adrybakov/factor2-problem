@@ -60,10 +60,15 @@
 
     \section{The problem}
 
-        SpinW \cite{SpinW} results does not reproduce the test case of 1D ferromagnetic chain, neither 3D ferromagnetic cubic crystal. 
+        There is a well know problem of the different notations of Heisenberg-like Hamiltonians (whether to include factor $1/2$ or minus sign, whether to double count or not). 
+        The compatibility of the reported parameters relies on the accurate description of the used model. 
+        Spin wave theory is often build on top of the Heisenberg-like Hamiltonian.
+        We found separate source of the mismatch of the result, namely magnon dispersion, when using a popular package SpinW \cite{SpinW} and method \cite{toth2015linear} on which the package is build.
+        SpinW \cite{SpinW} results do not reproduce the test case of 1D ferromagnetic chain, neither 3D ferromagnetic cubic crystal. In this paper we address this mismatch.
+
+
         The magnon dispersion for such systems plotted with SpinW is twice as small as the results from textbooks 
         \cite{rezende2020fundamentals, blundell2003magnetism, gurevich1996magnetization, simon2013oxford, coey2010magnetism, jensen1991rare, white1983quantum} (conversion from textbook's notations are discussed in Appendix~I). 
-
         Since there are various notations for the spin hamiltonian, which is the starting point for the magnon dispersion calculation, 
         in this paper all results are presents with respect to the notation of SpinW paper \cite{toth2015linear}:
 
@@ -119,8 +124,10 @@
 
     \section{The solution}
 
-        Starting point for the following discussion is equation (20) from the SpinW paper \cite{toth2015linear} 
-        (adjusted with respect to the comments at the end of the previous section):
+        In this section we present the detailed discussion of the correct result and the source of the mismatch. First, we follow the solution of the Heisenberg Hamiltonian presented in SpinW paper \cite{toth2015linear}.
+        Then we discuss two method for the solution of the spin wave Hamiltonian in subsections \ref{sec:colpa} and \ref{sec:white}. At the end we point the source of the mismatch in the original paper \cite{toth2015linear}.
+        Equation (20) from the SpinW paper \cite{toth2015linear} is a starting point
+        (where the rotation matrices are absorbed in $\boldsymbol{J}_{mi, nj}$ and the <<$^{\prime}$>> sign is dropped):
 
         \begin{multline}
             H = \sum_{mi, nj}\left\{\sqrt{\dfrac{S_{i}}{2}}\left(\overline{\boldsymbol{u}}^T_i b_{mi} + \boldsymbol{u}^T_i b^{\dag}_{mi} \right) + 
@@ -208,10 +215,10 @@
         where $^{\dag}$ means hermitian conjugate.
 
         The writing of the Hamiltonian in the basis \eqref{eq:basis} remind of the mathematical formalism picture of particle and antiparticle, 
-        however this interpretation is not physically justified.
+        nevertheless, this interpretation is not physically justified.
         Mathematically there is a close connection between the introduction of particle-antiparticle picture and negative energy solutions. 
-        However, in the case linearised spin-wave theory (LSWT) there are no negative energy solutions, 
-        therefore there is no need to utilize particle-antiparticle interpretation.
+        However, in the case of linearised spin-wave theory (LSWT) there are no negative energy solutions.
+        Therefore, there is no need to utilize particle-antiparticle interpretation.
         
         There is a question mark near the $\boldsymbol{k}$ under the sum, since that is the place where SpinW solution and what we are going to do next differ.
         In the article of Colpa \cite{colpa1978diagonalization}, in the textbook by Rezende \cite{rezende2020fundamentals} (page~$83$) 
@@ -240,7 +247,7 @@
 
             \item To keep the whole set of $\boldsymbol{k}$ and add $\sum_{-\boldsymbol{k}}$ to the Hamiltonian.
             This approach can be interpreted as the artificial doubling of the $\boldsymbol{k}$ space 
-            with the consecutive multiplication by the factor of $1/2$, which keeps the HAmiltonian the same. 
+            with the consecutive multiplication by the factor of $1/2$, which keeps the Hamiltonian the same. 
             We discuss this approach in the subsection~\ref{sec:white}, where we follow the solution of White and Bayne \cite{white1983quantum}.
         \end{itemize}
 
@@ -263,7 +270,7 @@
                 those with $m+r$ to $-\boldsymbol{k}$; $m$ denotes the number of degrees of freedom in the unit cell (or less)] 
             \end{quote}
 
-            We have just the case of the solid-state physics. Note, that in the Hamiltonian \eqref{eq:ham-colpa} the sum is carried out over $m$ and not $2m$, 
+            We have exactly the situation of the solid-state physics. Note, that in the Hamiltonian \eqref{eq:ham-colpa} the sum is carried out over $m$ and not $2m$, 
             which means that the terms with $\boldsymbol{k}$ and $-\boldsymbol{k}$ are written explicitly in the sum. 
             First of all, we write the Hamiltonian in a compact form:
             \begin{multline}
@@ -430,10 +437,10 @@
             which is the same as textbooks result.
         \subsection{SpinW solution}\label{sec:spinw}
     
-            We suspect that the source of the SpinW paper \cite{toth2015linear} mistake lies in the construction of the matrix $h(\boldsymbol{k})$. 
+            We suspect that the source of the mistake in SpinW paper \cite{toth2015linear} lies in the construction of the matrix $h(\boldsymbol{k})$. 
             The diagonalization of the bosonic Hamiltonian with the terms mixing $\pm\boldsymbol{k}$
-            requires to have the term with $-\boldsymbol{k}$, for each $\boldsymbol{k}$, even for the negative ones, 
-            which means that for some particular $\boldsymbol{k_0}$ one has to add the Hamiltonian for $-\boldsymbol{k_0}$ \textbf{and} 
+            requires to have the term with $-\boldsymbol{k}$, for each $\boldsymbol{k}$, even for the negative ones.
+            It means that for some particular $\boldsymbol{k_0}$ one has to add the Hamiltonian for $-\boldsymbol{k_0}$ \textbf{and} 
             for $-\boldsymbol{k_0}$ one is required to add the Hamiltonian for $\boldsymbol{k_0}$. Instead, what we suppose happened with the derivation of \eqref{eq:h-spinw} 
             from \eqref{eq:ham-before} is the following:
             \begin{multline}
